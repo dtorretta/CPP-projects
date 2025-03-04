@@ -1,6 +1,10 @@
 NAME = Fixed
 
 SRC	=   sources/Fixed.cpp \
+		sources/arithmetic.cpp \
+		sources/comparison.cpp \
+		sources/increment_decrement.cpp \
+		sources/static.cpp \
 		sources/main.cpp
 
 INC =   -I ./includes/

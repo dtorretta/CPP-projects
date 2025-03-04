@@ -40,6 +40,7 @@ class Fixed
 		Fixed operator-(const Fixed &other) const;
 		Fixed operator*(const Fixed &other) const;
 		Fixed operator/(const Fixed &other) const;
+		
 		// comparison operators
 		bool operator>(const Fixed &other) const;
 		bool operator<(const Fixed &other) const;
@@ -47,11 +48,13 @@ class Fixed
 		bool operator<=(const Fixed &other) const;
 		bool operator==(const Fixed &other) const;
 		bool operator!=(const Fixed &other) const;
+		
 		// increment/decrement operators
 		Fixed operator++(); //pre-increment
 		Fixed operator++(int); //post-increment
 		Fixed operator--(); //pre-decrement
 		Fixed operator--(int); //post-decrement
+		
 		//Static min & max functions
 		static Fixed& min(Fixed &a, Fixed &b);
 		static const Fixed& min(const Fixed &a, const Fixed &b);
