@@ -1,0 +1,71 @@
+Persona& operator=(const Persona& other);
+
+Se usa para definir el comportamiento de la asignación entre objetos (p1 = p2)
+Si no lo definimos manualmente, C++ simplemente copia los valores de los atributos por defecto.
+Si la clase tiene punteros dinámicos, la copia por defecto solo copiaría la dirección de memoria, 
+lo que podría causar doble delete en el destructor (💥 error de doble free).
+
+para ellos la funcion 'Copy assignment operator' copia los datos manualmente.
+Si hay punteros, crea una nueva copia en memoria en lugar de copiar la dirección.
+
+el primer '&' en 'Persona&' indica que la función devuelve una referencia al objeto actual (*this)
+una referencia al objeto actual permite asignaciones encadenadas. 
+sin el '&' devolveria una copia del objeto entonces cada vez que asignemos, 
+se haría una copia nueva del objeto en vez de modificar p1 directamente. --> Se crean objetos temporales innecesarios 
+
+
+el segundo '&' en '(const Persona& other)' es meramente para evitar que se pase el parametro como copia. EFICIENCIA
+De esta forma 'other' se pasa como una referencia
+const también mejora la seguridad, asegurando que other no se modifique dentro de operator=. EFICIENCIA
+
+
+🚀 EL & ES MERAMENTE POR EFICIENCIA
+La diferencia clave es que, sin el & en operator=, se crearán copias innecesarias cada vez que se haga una asignación.
+
+
+🔥 El concepto es muy similar al uso de punteros en C para evitar copias y mejorar eficiencia. 
+
+Pero hay una razón clave por la que en C++ usamos referencias (&) en lugar de punteros (*) en operator=:
+
++ Las referencias (&) siempre apuntan a un objeto válido (no pueden ser nullptr).
++ Si usamos punteros en operator=, tendríamos que verificar si this es nullptr y manejarlo con más cuidado.
++ los punteros no permite asignaciones encadenadas (En lugar de hacer p1 = p2 = p3;, tendríamos que escribir *p1 = *p2 = *p3;)
+
+⚠️ Se podría usar punteros (*), siempre que verifiques que no sean nullptr, pero no es la forma recomendada en C++. ⚠️
+En C, se usan punteros (*). En C++, se prefieren referencias (&) cuando sea posible.
+
+
+
+-------------
+Los números de punto fijo (fixed-point numbers) son una alternativa a los enteros (int) y a los de punto flotante (float/double), 
+diseñados para ofrecer un equilibrio entre precisión, rango y eficiencia.
+
+Precisión:
+Int: Solo valores enteros
+Float: Precisión variable, errores de redondeo.	
+fixed-point: Precisión controlada, sin errores de redondeo.
+
+En vez de guardar 1.5 como 1.5, lo guardamos como 150 y recordamos que los dos últimos dígitos representan decimales.
+Este método es lo que llamamos números en punto fijo.
+
+Cuando el enunciado dice que "el número de bits fraccionarios será 8", 
+significa que la computadora va a dividir el número guardado por 256 (porque 2^8 = 256) para obtener su versión decimal real.
+ 
+ 
+-------------
+📌 ¿Qué es const en C++?
+const en los parámetros de una función: Indica que el valor del parámetro no debe ser modificado dentro de la función.
+const en los métodos de una clase: Indica que el método(funcion) no va a modificar el estado del objeto sobre el que se invoca.
+(es decir, asignar algo dentro de la funcion. si es const no puedo dentro de la fx hacer _fixedPointNumber == raw )
+Además, un objeto const solo puede invocar métodos const.
+
+
+STATIC
+Una función static en una clase significa que no depende de una instancia específica de la clase. 
+Es decir, puedes llamarla sin necesidad de tener un objeto de esa clase.
+
+que un parametro sea static, significa que esta variable pertenece a la clase y no a las instancias (objetos) de la clase.
+si no dijera static Cada objeto (Fixed a; Fixed b;) tendría su propia copia de fractionalBits.
+
+al ser static, se define como variable global:
+const int Fixed::_fractionalBits = 8;
