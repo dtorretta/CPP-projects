@@ -1,0 +1,30 @@
+1. Estructura del árbol de herencia:
+Cuando tienes un árbol de herencia con al menos tres niveles (una clase base, clases intermedias y una clase derivada final), 
+el flujo de la herencia sigue una jerarquía:
+
+Clase base: La clase desde la que otras clases heredan. Todos los atributos y métodos comunes se definen aquí.
+Clases intermedias: Son las clases que heredan de la clase base y pueden agregar o modificar sus propios atributos y métodos. 
+Pueden heredar de la clase base o de otras clases intermedias.
+Clase final: La clase más derivada en la jerarquía que hereda de las clases intermedias o directamente de la clase base. 
+Aquí se usan (o sobrescriben) los atributos y métodos heredados.
+
+2. ¿Cuándo y por qué hacer la herencia virtual?
+Herencia virtual es un concepto que se usa para evitar problemas de doble herencia cuando tienes una herencia múltiple.
+Problema de doble herencia: Si tienes una clase derivada que hereda de dos o más clases que a su vez heredan de la misma clase base, 
+sin usar herencia virtual, la clase derivada terminaría heredando múltiples instancias de la clase base, lo cual es un problema.
+Solución (herencia virtual): Al declarar la herencia como virtual, el compilador garantiza que solo habrá una instancia de la clase base, 
+incluso si hay múltiples rutas de herencia hacia ella.
+Ejemplo: Supongamos que tienes una clase ClapTrap, y luego tienes dos clases derivadas, FragTrap y ScavTrap, que heredan de ClapTrap. 
+Luego, DiamondTrap hereda de ambas. Si no se usa herencia virtual, DiamondTrap tendrá dos copias de ClapTrap 
+(una por FragTrap y otra por ScavTrap). Con la herencia virtual, se asegura que solo se herede una instancia de ClapTrap, 
+independientemente de cuántas clases intermedias estén involucradas.
+
+3. ¿Por qué usar protected para atributos especiales en clases intermedias?
+protected es el nivel de acceso adecuado para los atributos en las clases intermedias si deseas que estas propiedades 
+puedan ser heredadas por las clases derivadas sin ser accesibles directamente desde fuera de la clase.
+
+4. Resumen de cómo se organiza la herencia y acceso a atributos:
+En una jerarquía de clases con herencia múltiple, como en el caso de DiamondTrap, 
+es importante usar herencia virtual en las clases intermedias para evitar instancias duplicadas de la clase base.
+Los atributos especiales de las clases intermedias se deben declarar como protected para que las clases derivadas puedan acceder a ellos. 
+Esto es común en clases que forman parte de una jerarquía y están diseñadas para ser extendidas.

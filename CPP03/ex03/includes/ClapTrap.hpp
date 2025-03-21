@@ -17,7 +17,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string _name;
 		unsigned int _Hitpoints;
 		unsigned int _Energypoints;
@@ -39,7 +39,10 @@ class ClapTrap
 		unsigned int get_energypoints() const;
 		unsigned int get_attackdamage() const;
 		std::string get_name() const;
-		//void setRawBits(int const raw);
 };
 		
 #endif
+
+/*
+PRIVATE: no puedo acceder desde ScavTrap
+*/

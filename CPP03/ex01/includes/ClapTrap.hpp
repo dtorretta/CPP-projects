@@ -17,7 +17,7 @@
 
 class ClapTrap
 {
-	private:
+	protected: //CUAL ES LA DIFENCIA CON PRIVATE?
 		std::string _name;
 		unsigned int _Hitpoints;
 		unsigned int _Energypoints;
@@ -43,3 +43,7 @@ class ClapTrap
 };
 		
 #endif
+
+/*
+PRIVATE: no puedo acceder desde ScavTrap
+*/

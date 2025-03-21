@@ -6,28 +6,28 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/20 18:36:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:09:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap(void): _name("Rei"), _Hitpoints(10), _Energypoints(10), _Attackdamage(0) 
+ClapTrap::ClapTrap(void): _name("Lilith"), _Hitpoints(10), _Energypoints(10), _Attackdamage(0) 
 {
-	std::cout << YELLOW << "ClapTrap: No pilot available. Rei Ayanami will pilot the EVA Unit. Prepare for combat 🔥" << RESET << std::endl;
+	std::cout << YELLOW << "ClapTrap default constructor called" << RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name): _name(name), _Hitpoints(10), _Energypoints(10), _Attackdamage(0)
 {
-	std::cout << YELLOW << "ClapTrap " << name << ": Pilot ready. EVA Unit is operational. Prepare for combat 🔥" << RESET << std::endl;
+	std::cout << YELLOW << "ClapTrap name constructor called" << RESET << std::endl;
 } 
 
 // The copy constructor creates a new object as a copy of an existing object.
 ClapTrap::ClapTrap(const ClapTrap& src): _name(src.get_name()), _Hitpoints(src.get_hitpoints()), _Energypoints(src.get_energypoints()), _Attackdamage(src.get_attackdamage())
 {
 	//no necesitas crear un objeto extra como newClap.
-	std::cout << YELLOW << "Copy constructor: ClapTrap " << _name << " copied!" << RESET << std::endl;
+	std::cout << YELLOW << "ClapTrap copy constructor called" << RESET << std::endl;
 }
 
 // The copy assignment operator copies the contents from one existing object to another existing object.
@@ -39,7 +39,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 		this->_Hitpoints = src.get_hitpoints();
 		this->_Energypoints = src.get_energypoints();
 		this->_Attackdamage = src.get_attackdamage();
-		std::cout << YELLOW << "Copy operator: ClapTrap " << _name << " copied!" << RESET << std::endl;
+		std::cout << YELLOW << "ClapTrap copy operator called" << RESET << std::endl;
 	}
 	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
 }
@@ -47,7 +47,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 //destructor
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << _name << " has disconnected... The EVA has been deactivated. Ending operation." << std::endl;
+	std::cout << YELLOW << "ClapTrap destructor: " << _name << RESET << std::endl;
 } 
 
 //getter
@@ -87,7 +87,7 @@ void ClapTrap::attack(const std::string& target)
 	return;
 }
 
-void ClapTrap::takeDamage(unsigned int amount) //que onda con el hecho de que son negativos?
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_Hitpoints == 0)
 	{
@@ -95,7 +95,7 @@ void ClapTrap::takeDamage(unsigned int amount) //que onda con el hecho de que so
         return;
 	}
 	
-	std::cout << BLUE << "ClapTrap " << _name <<" suffered " << amount << " hit points 💥";
+	std::cout << YELLOW << "ClapTrap " << _name <<" suffered " << amount << " hit points 💥";
 	
 	if(amount >= _Hitpoints)
 	{
