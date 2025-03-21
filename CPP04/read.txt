@@ -1,0 +1,25 @@
+✅ ¿Qué es una clase abstracta?
+Una clase abstracta en C++ es una clase que no puede ser instanciada directamente 
+Solo puede servir como base para otras clases, cuando queremos que todas las clases hijas compartan una estructura común, 
+pero cada una debe implementar su propio comportamiento para ciertos métodos.
+
+✅ ¿Qué es instanciar?
+Instanciar significa crear un objeto a partir de una clase.
+
+✅ El problema con una clase genérica como Animal
+Si queremos representar diferentes tipos de animales (Perro, Gato, Pájaro), no todos hacen el mismo sonido. 
+Sería mejor que cada tipo de animal tenga su propio sonido.
+
+✅ ¿Por qué convertir Animal en una clase abstracta?
+Para evitar que se puedan crear animales genéricos sin un sonido definido, convertimos Animal en una clase abstracta.
+
+✅¿Cómo se define una clase abstracta?
+una clase se vuelve abstracta cuando tiene al menos una función virtual pura. 
+Una función virtual pura se define con = 0 al final de su declaración.
+
+virtual void makeSound() const = 0; // Ahora es una clase abstracta
+
+✅¿puedo hacerlo con otra funcion?
+Sí, sería lo mismo en el sentido de que haría que Animal siguiera siendo una clase abstracta, ya que tendría al menos un método virtual puro (= 0).
+
+Pero si defines getType() como una función virtual pura, estarías obligando a todas las clases hijas (Dog, Cat, etc.) a definir su propia versión de getType().
