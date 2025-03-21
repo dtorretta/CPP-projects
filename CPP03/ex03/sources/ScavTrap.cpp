@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 01:01:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 15:58:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ ScavTrap::ScavTrap(void): ClapTrap() //primero crea el objeto claptrap y luego e
 	std::cout << ORANGE << "ScavTrap default constructor called" << RESET << std::endl;
 }
 
+/*
+Lo que sucede aquí es que el constructor de ClapTrap(name) se llama correctamente y asigna el valor "Asuka" al atributo 
+_name de ClapTrap. Pero este valor no se refleja automáticamente en la clase derivada ScavTrap si no haces algo más.
+*/
 ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 {
+	//si yo aca no hago _name = name; no se va a modificar.
 	this->_Hitpoints = 100; //modifica los valolres de los atributos de la clase base
 	this->_Energypoints = 50;
 	this->_Attackdamage = 20;
@@ -33,7 +38,19 @@ ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 // The copy constructor creates a new object as a copy of an existing object.
 ScavTrap::ScavTrap(const ScavTrap& src): ClapTrap(src) //llama directamente al copy constructor de la clase base
 {
+	this->_Energypoints = src._Energypoints;
 	std::cout << ORANGE << "ScavTrap copy constructor called" << RESET << std::endl;
+}
+
+// The copy assignment operator copies the contents from one existing object to another existing object.
+ScavTrap& ScavTrap::operator=(const ScavTrap& src)
+{
+	if(this != &src)
+	{
+		ClapTrap::operator=(src);
+		std::cout << ORANGE << "ScavTrap copy operator called" << RESET << std::endl;
+	}
+	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
 }
 
 //destructor
@@ -67,7 +84,8 @@ void ScavTrap::attack(const std::string& target)
         return;
 	}
 	
-	std::cout << BLUE << "ScavTrap " << _name << " attacks " << target << " causing " <<  get_attackdamage() << " points of damage 💥" << RESET << std::endl;
+	//std::cout << RED << "NAME: " << _name << RESET << std::endl; //borrar
+	std::cout << BLUE << "ScavTrap " << this->_name << " attacks " << target << " causing " <<  get_attackdamage() << " points of damage 💥" << RESET << std::endl;
 	_Energypoints --;
 	return;
 }

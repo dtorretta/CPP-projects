@@ -15,67 +15,87 @@
 
 int main() {
 
-    std::cout << "\n*** TESTING THE DEFAULT CONSTRUCTOR & THE COPY ASSIGNMENT OPERATOR ***\n" << std::endl;
-
-    ClapTrap A; //default name Rei
-    ClapTrap B("Shinji");
-    A = B;
-
-    std::cout << "\nA: " << std::endl
-        << "    name: " << A.get_name() << std::endl
+    std::cout << "\n-----------------------------------------------------------------------------"  << std::endl;
+    std::cout << "                                TEST 1"  << std::endl;
+    std::cout << "                           Assigment Operator"  << std::endl;
+    std::cout << "-----------------------------------------------------------------------------"  << std::endl;
+    {
+        std::cout << FORM << "\n✅ #1 Create object A with ClapTrap Default constructor\n" << RESET << std::endl;
+        ClapTrap A; //default name Rei
+        
+        std::cout << FORM << "\n✅ #2 Create object B with ClapTrap Name constructor\n" << RESET << std::endl;
+        ClapTrap B("Shinji");
+        
+        std::cout << FORM << "\n✅ #3 Make a copy with the Assigment Operator\n" << RESET << std::endl;
+        A = B;
+    
+        std::cout << FORM << "\n✅ #4 Print object A's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << A.get_name() << std::endl
+            << "    health: " << A.get_hitpoints() << std::endl
+            << "    energy: " << A.get_energypoints() << std::endl
+            << "    damage: " << A.get_attackdamage() << std::endl;
+            
+        std::cout << FORM << "\n✅ #5 Print object B's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << B.get_name() << std::endl
+            << "    health: " << B.get_hitpoints() << std::endl
+            << "    energy: " << B.get_energypoints() << std::endl
+            << "    damage: " << B.get_attackdamage() << std::endl;
+            
+        std::cout << FORM << "\n✅ #6 Test object A's 0HP\n" << RESET << std::endl;
+        A.attack("Lilith");
+        A.takeDamage(3);
+        A.beRepaired(4);
+        A.takeDamage(10);//dead!
+        A.attack("Adam"); //no more HP. cant attack.
+        A.beRepaired(3); //no more HP. cant be repaired.
+        
+        std::cout << FORM << "\n✅ #4 Print object A's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << A.get_name() << std::endl
         << "    health: " << A.get_hitpoints() << std::endl
         << "    energy: " << A.get_energypoints() << std::endl
         << "    damage: " << A.get_attackdamage() << std::endl;
         
-    std::cout << "\nB: " << std::endl
-        << "    name: " << B.get_name() << std::endl
-        << "    health: " << B.get_hitpoints() << std::endl
-        << "    energy: " << B.get_energypoints() << std::endl
-        << "    damage: " << B.get_attackdamage() << "\n" << std::endl;
-        
-    A.attack("Lilith");
-    A.takeDamage(3);
-    A.beRepaired(4);
-    A.takeDamage(10);//dead!
-    A.attack("Adam"); //no more HP. cant attack.
-    A.beRepaired(3); //no more HP. cant be repaired.
-    
-    std::cout << "\nA: " << std::endl
-    << "    name: " << A.get_name() << std::endl
-    << "    health: " << A.get_hitpoints() << std::endl
-    << "    energy: " << A.get_energypoints() << std::endl
-    << "    damage: " << A.get_attackdamage() << std::endl;
-    
-    
-    std::cout << "\n*** TESTING THE NAME CONSTRUCTOR & THE COPY ASSIGNMENT OPERATOR ***\n" << std::endl;
-    ClapTrap D("Asuka");
-    ClapTrap C(D);
-    
-    std::cout << "\nC: " << std::endl
-    << "    name: " << C.get_name() << std::endl
-    << "    health: " << C.get_hitpoints() << std::endl
-    << "    energy: " << C.get_energypoints() << std::endl
-    << "    damage: " << C.get_attackdamage() << std::endl;
-    
-    std::cout << "\nD: " << std::endl
-    << "    name: " << D.get_name() << std::endl
-    << "    health: " << D.get_hitpoints() << std::endl
-    << "    energy: " << D.get_energypoints() << std::endl
-    << "    damage: " << D.get_attackdamage() << "\n" << std::endl;
-    
-    for(int i = 0; i < 10; i++)
+        std::cout << FORM << "\n✅ #5 Drestructors\n" << RESET << std::endl;
+    }
+    std::cout << "\n-----------------------------------------------------------------------------"  << std::endl;
+    std::cout << "                                TEST 1"  << std::endl;
+    std::cout << "                             Copy Operator"  << std::endl;
+    std::cout << "-----------------------------------------------------------------------------"  << std::endl;
     {
-        C.attack("Lilith");
-    } //c has no more energy
-    C.attack("Lilith"); //no more enery points. cant attack.
-    C.beRepaired(3); //no more enery points. cant be repaired.
-    
-    std::cout << "\nC: " << std::endl
-    << "    name: " << C.get_name() << std::endl
-    << "    health: " << C.get_hitpoints() << std::endl
-    << "    energy: " << C.get_energypoints() << std::endl
-    << "    damage: " << C.get_attackdamage() << "\n" << std::endl;
-    
+        std::cout << FORM << "\n✅ #1 Create object D with ClapTrap Default constructor\n" << RESET << std::endl;
+        ClapTrap D("Asuka");
+        
+        std::cout << FORM << "\n✅ #2 create object C with the copy operator\n" << RESET << std::endl;
+        ClapTrap C(D);
+        
+        std::cout << FORM << "\n✅ #3 Print object C's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << C.get_name() << std::endl
+        << "    health: " << C.get_hitpoints() << std::endl
+        << "    energy: " << C.get_energypoints() << std::endl
+        << "    damage: " << C.get_attackdamage() << std::endl;
+        
+        std::cout << FORM << "\n✅ #4 Print object D's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << D.get_name() << std::endl
+        << "    health: " << D.get_hitpoints() << std::endl
+        << "    energy: " << D.get_energypoints() << std::endl
+        << "    damage: " << D.get_attackdamage() << std::endl;
+        
+        std::cout << FORM << "\n✅ #5 Test object C's 0 EnergyPoints\n" << RESET << std::endl;
+        for(int i = 0; i < 10; i++)
+        {
+            C.attack("Lilith");
+        } //c has no more energy
+        C.attack("Lilith"); //no more enery points. cant attack.
+        C.beRepaired(3); //no more enery points. cant be repaired.
+        
+        std::cout << FORM << "\n✅ #6 Print object C's stats\n" << RESET << std::endl;
+        std::cout << "    name: " << C.get_name() << std::endl
+        << "    health: " << C.get_hitpoints() << std::endl
+        << "    energy: " << C.get_energypoints() << std::endl
+        << "    damage: " << C.get_attackdamage() << std::endl;
+        
+        std::cout << FORM << "\n✅ #7 Drestructors\n" << RESET << std::endl;
+    }
     return 0;
 }
 

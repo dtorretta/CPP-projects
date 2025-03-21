@@ -14,6 +14,7 @@
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
 #define ORANGE  "\033[38;2;255;165;0m" 
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
 class ScavTrap : public ClapTrap //ScavTrap es una clase derivada de ClapTrap, es decir, ScavTrap hereda de ClapTrap.
@@ -22,6 +23,7 @@ class ScavTrap : public ClapTrap //ScavTrap es una clase derivada de ClapTrap, e
 		ScavTrap(void); // Default constructor
 		ScavTrap(const std::string name); 
 		ScavTrap(const ScavTrap& src); // Copy constructor 
+		ScavTrap& operator=(const ScavTrap& src); // Copy assignment operator
 		~ScavTrap();
 
 		void attack(const std::string& target); //sobreescribe el metodo ATTACK de ClapTrap.

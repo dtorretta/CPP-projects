@@ -14,9 +14,10 @@
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
 #define ORANGE  "\033[38;2;255;165;0m" 
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
-class FragTrap : virtual public ClapTrap //ScavTrap es una clase derivada de ClapTrap, es decir, ScavTrap hereda de ClapTrap.
+class FragTrap : virtual public ClapTrap //AGREGAMOS VIRTUAL
 {
 	protected:
 		unsigned int _Hitpoints;
@@ -24,10 +25,14 @@ class FragTrap : virtual public ClapTrap //ScavTrap es una clase derivada de Cla
 		
 	public:
 		FragTrap(void); // Default constructor
-		FragTrap(const std::string name); 
+		FragTrap(const std::string name); // Name constructor
+		FragTrap(const FragTrap& copy); // Copy constructor
+		FragTrap& operator=(const FragTrap& src); // Copy assignment operator
 		~FragTrap();
 		
 		void highFivesGuys(void);
+		
+		//getter
 		unsigned int get_hitpoints() const;
 		unsigned int get_attackdamage() const;
 

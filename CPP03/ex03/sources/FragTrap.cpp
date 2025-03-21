@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 01:02:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 15:20:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ FragTrap::FragTrap(void): ClapTrap() //primero crea el objeto claptrap y luego e
 	std::cout << MAGENTA << "FragTrap default constructor called" << RESET << std::endl;
 }
 
+// Name constructor
 FragTrap::FragTrap(const std::string name): ClapTrap(name)
 {
 	this->_Hitpoints = 100; //modifica los valores de los atributos de la clase base
@@ -30,7 +31,27 @@ FragTrap::FragTrap(const std::string name): ClapTrap(name)
 	
 } 
 
-//destructor
+// The copy constructor
+FragTrap::FragTrap(const FragTrap& src): ClapTrap(src) //llama directamente al copy constructor de la clase base
+{
+	//ahora la clse tiene miembros protevted que ntes no estaban por lo quehay que defnirlos manualmente
+	this->_Hitpoints = src._Hitpoints; //new
+	this->_Attackdamage = src._Attackdamage; //new
+	std::cout << MAGENTA << "FragTrap copy constructor called" << RESET << std::endl;
+}
+
+// The copy assignment operator
+FragTrap& FragTrap::operator=(const FragTrap& src)
+{
+	if(this != &src)
+	{
+		ClapTrap::operator=(src);
+		std::cout << MAGENTA << "FragTrap copy operator called" << RESET << std::endl;
+	}
+	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+}
+
+// Destructor
 FragTrap::~FragTrap()
 {
 	std::cout << MAGENTA << "FragTrap destructor: " << _name << RESET << std::endl;

@@ -14,48 +14,56 @@
 #include <iostream>
 
 int main() {
-    std::cout << "\n*** ScavTrap ***" << std::endl;
+
+    std::cout << "\n-----------------------------------------------------------------------------"  << std::endl;
+    std::cout << "                                TEST 1"  << std::endl;
+    std::cout << "                               ScavTrap "  << std::endl;
+    std::cout << "-----------------------------------------------------------------------------"  << std::endl;
+    
+    std::cout << FORM << "\n✅ #1 Create object A with ScavTrap Name constructor\n" << RESET << std::endl;
     ScavTrap    A("Shinji");
+    std::cout << FORM << "\n✅ #2 Create object B with ScavTrap Default constructor\n" << RESET << std::endl;
     ScavTrap    B; //default name Lilith
 
-    std::cout << "\nA: " << std::endl
-    << "    name: " << A.get_name() << std::endl
+    std::cout << FORM << "\n✅ #3 Print object A's stats\n" << RESET << std::endl;
+    std::cout << "    name: " << A.get_name() << std::endl
     << "    health: " << A.get_hitpoints() << std::endl
     << "    energy: " << A.get_energypoints() << std::endl
     << "    damage: " << A.get_attackdamage() << std::endl;
     
-    std::cout << "\nB: " << std::endl
-    << "    name: " << B.get_name() << std::endl
+    std::cout << FORM << "\n✅ #4 Print object B's stats\n" << RESET << std::endl;
+    std::cout << "    name: " << B.get_name() << std::endl
     << "    health: " << B.get_hitpoints() << std::endl
     << "    energy: " << B.get_energypoints() << std::endl
-    << "    damage: " << B.get_attackdamage() << "\n" << std::endl;
+    << "    damage: " << B.get_attackdamage() << std::endl;
         
+    std::cout << FORM << "\n✅ #5 test new method guardGate\n" << RESET << std::endl; 
     A.guardGate();
-    std::cout << std::endl;
      
-     
+    std::cout << FORM << "\n✅ #6 Makes object B 0HP\n" << RESET << std::endl;  
     for (int i = 0; i < 5; i++) 
     {
         A.attack("Lilith");
         B.takeDamage(A.get_attackdamage());;
         
     } //Lilith is dead
-    std::cout << std::endl;
     
+    std::cout << FORM << "\n✅ #7 test new method guardGate with object B\n" << RESET << std::endl;  
     B.guardGate(); //B is dead, cant guard the door.
     
-    std::cout << "\nA: " << std::endl
-    << "    name: " << A.get_name() << std::endl
+    std::cout << FORM << "\n✅ #8 Print object A's stats\n" << RESET << std::endl;
+    std::cout << "    name: " << A.get_name() << std::endl
     << "    health: " << A.get_hitpoints() << std::endl
     << "    energy: " << A.get_energypoints() << std::endl
     << "    damage: " << A.get_attackdamage() << std::endl;
     
-    std::cout << "\nB: " << std::endl
-    << "    name: " << B.get_name() << std::endl
+    std::cout << FORM << "\n✅ #9 Print object B's stats\n" << RESET << std::endl;
+    std::cout << "    name: " << B.get_name() << std::endl
     << "    health: " << B.get_hitpoints() << std::endl
     << "    energy: " << B.get_energypoints() << std::endl
-    << "    damage: " << B.get_attackdamage() << "\n" << std::endl;
-       
+    << "    damage: " << B.get_attackdamage() << std::endl;
+    
+    std::cout << FORM << "\n✅ #10 Drestructors\n" << RESET << std::endl;
     return 0;
 }
 

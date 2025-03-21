@@ -13,7 +13,8 @@
 #define BLUE	"\033[36m"
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
-#define ORANGE  "\033[38;2;255;165;0m" 
+#define ORANGE  "\033[38;2;255;165;0m"
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
 class FragTrap : public ClapTrap //ScavTrap es una clase derivada de ClapTrap, es decir, ScavTrap hereda de ClapTrap.
@@ -21,6 +22,8 @@ class FragTrap : public ClapTrap //ScavTrap es una clase derivada de ClapTrap, e
 	public:
 		FragTrap(void); // Default constructor
 		FragTrap(const std::string name); 
+		FragTrap(const FragTrap& src); // Copy constructor 
+		FragTrap& operator=(const FragTrap& src); // Copy assignment operator
 		~FragTrap();
 		
 		void highFivesGuys(void);

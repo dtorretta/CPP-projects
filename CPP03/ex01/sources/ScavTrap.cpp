@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/20 20:10:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 12:31:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 ScavTrap::ScavTrap(const ScavTrap& src): ClapTrap(src) //llama directamente al copy constructor de la clase base
 {
 	std::cout << ORANGE << "ScavTrap copy constructor called" << RESET << std::endl;
+}
+
+// The copy assignment operator copies the contents from one existing object to another existing object.
+ScavTrap& ScavTrap::operator=(const ScavTrap& src)
+{
+	if(this != &src)
+	{
+		ClapTrap::operator=(src);
+		std::cout << ORANGE << "ScavTrap copy operator called" << RESET << std::endl;
+	}
+	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
 }
 
 //destructor

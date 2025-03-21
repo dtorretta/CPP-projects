@@ -15,7 +15,8 @@
 #define BLUE	"\033[36m"
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
-#define ORANGE  "\033[38;2;255;165;0m" 
+#define ORANGE  "\033[38;2;255;165;0m"
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
 class DiamondTrap : public ScavTrap, public FragTrap
@@ -26,13 +27,15 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	public:
 		DiamondTrap(void); // Default constructor
 		DiamondTrap(const std::string name); 
+		DiamondTrap(const DiamondTrap& copy);
+		DiamondTrap& operator=(const DiamondTrap& copy);
 		~DiamondTrap();
 		
-		void attack(const std::string& target); //we use the one for ScavTrap
+		//void attack(const std::string& target); //we use the one for ScavTrap
+		using ScavTrap::attack;
+		
 		void whoAmI();
 		std::string get_name() const;
-		
-	
 };
 		
 #endif

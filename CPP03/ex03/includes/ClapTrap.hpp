@@ -12,7 +12,8 @@
 #define BLUE	"\033[36m"
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
-#define ORANGE  "\033[38;2;255;165;0m" 
+#define ORANGE  "\033[38;2;255;165;0m"
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
 class ClapTrap
@@ -25,20 +26,20 @@ class ClapTrap
 		
 	public:
 		ClapTrap(void); // Default constructor
-		ClapTrap(const std::string name); 
+		ClapTrap(const std::string name); // Name constructor
 		ClapTrap(const ClapTrap& src); // Copy constructor 
 		ClapTrap& operator=(const ClapTrap& src); // Copy assignment operator
-		~ClapTrap();
+		virtual ~ClapTrap(); //cada uno tene su propia version ⚠️
 
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target); //virtual porque ScavTrap tiene su propia version ⚠️
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		
 		//getter
-		unsigned int get_hitpoints() const;
-		unsigned int get_energypoints() const;
-		unsigned int get_attackdamage() const;
-		std::string get_name() const;
+		virtual unsigned int get_hitpoints() const;
+		virtual unsigned int get_energypoints() const;
+		virtual unsigned int get_attackdamage() const;
+		virtual std::string get_name() const;
 };
 		
 #endif

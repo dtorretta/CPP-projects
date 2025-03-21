@@ -18,6 +18,11 @@ class HumanB
 	private:
 		std::string _name;
 		Weapon *_weapon; //si o si pointer porque esto acepta que en el contructor sea asignado como NULL
+		/*
+			en este caso no usamos dentro del contructor new Weapon porque la memoria ya se esta alocando en el main.
+			en el main tampoc hace new (heap) sino que asigna memoria directo en el stack.
+		*/
+		
 		
 	public:
 		HumanB(const std::string& name); //si o si const ya que el string en main es por defecto const // el const de weapon es por buena practica

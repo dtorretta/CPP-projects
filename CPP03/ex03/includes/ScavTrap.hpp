@@ -14,21 +14,25 @@
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
 #define ORANGE  "\033[38;2;255;165;0m" 
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
-class ScavTrap : virtual public ClapTrap //ScavTrap es una clase derivada de ClapTrap, es decir, ScavTrap hereda de ClapTrap.
+class ScavTrap : virtual public ClapTrap //AGREGAMOS VIRTUAL
 {
 	protected:
 		unsigned int _Energypoints;
 	
 	public:
 		ScavTrap(void); // Default constructor
-		ScavTrap(const std::string name); 
-		ScavTrap(const ScavTrap& src); // Copy constructor 
-		~ScavTrap();
+		ScavTrap(const std::string name); // Name constructor
+		ScavTrap(const ScavTrap& src); // Copy constructor
+		ScavTrap& operator=(const ScavTrap& src); // Copy assignment operator
+		virtual ~ScavTrap(); //podria ir sin el virtual
 
-		void attack(const std::string& target); //sobreescribe el metodo ATTACK de ClapTrap.
+		virtual void attack(const std::string& target); //sobreescribe el metodo ATTACK de ClapTrap. //podria ir sin el virtual
 		void guardGate(); //agrega nuevos metodos
+		
+		//getter
 		unsigned int get_energypoints() const;
 };
 		

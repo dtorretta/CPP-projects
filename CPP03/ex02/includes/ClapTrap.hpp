@@ -13,6 +13,7 @@
 #define YELLOW	"\033[0;33m"
 #define MAGENTA "\033[35m"
 #define ORANGE  "\033[38;2;255;165;0m" 
+#define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
 class ClapTrap

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/20 20:28:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 12:35:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ FragTrap::FragTrap(const std::string name): ClapTrap(name)
 	std::cout << MAGENTA << "FragTrap name constructor called" << RESET << std::endl;
 	
 } 
+// The copy constructor creates a new object as a copy of an existing object.
+FragTrap::FragTrap(const FragTrap& src): ClapTrap(src) //llama directamente al copy constructor de la clase base
+{
+	std::cout << MAGENTA << "FragTrap copy constructor called" << RESET << std::endl;
+}
+
+// The copy assignment operator copies the contents from one existing object to another existing object.
+FragTrap& FragTrap::operator=(const FragTrap& src)
+{
+	if(this != &src)
+	{
+		ClapTrap::operator=(src);
+		std::cout << MAGENTA << "FragTrap copy operator called" << RESET << std::endl;
+	}
+	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+}
 
 //destructor
 FragTrap::~FragTrap()

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/20 20:32:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 15:51:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ ClapTrap::ClapTrap(const std::string name): _name(name), _Hitpoints(10), _Energy
 } 
 
 // The copy constructor creates a new object as a copy of an existing object.
-ClapTrap::ClapTrap(const ClapTrap& src): _name(src.get_name()), _Hitpoints(src.get_hitpoints()), _Energypoints(src.get_energypoints()), _Attackdamage(src.get_attackdamage())
+ClapTrap::ClapTrap(const ClapTrap& src)
 {
-	//no necesitas crear un objeto extra como newClap.
+	this->_name = src._name;
+    this->_Hitpoints = src._Hitpoints;
+    this->_Energypoints = src._Energypoints;
+    this->_Attackdamage = src._Attackdamage;
+    //no necesitas crear un objeto extra como newClap.
 	std::cout << YELLOW << "ClapTrap copy constructor called" << RESET << std::endl;
 }
 

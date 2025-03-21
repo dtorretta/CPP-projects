@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/20 18:36:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/21 23:12:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src)
 //destructor
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << _name << " has disconnected... The EVA has been deactivated. Ending operation." << std::endl;
+	std::cout << RED << "ClapTrap " << _name << " has disconnected... The EVA has been deactivated. Ending operation." << RESET << std::endl;
 } 
 
 //getter
