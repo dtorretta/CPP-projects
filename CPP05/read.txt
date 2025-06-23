@@ -1,0 +1,169 @@
+----EX00----
+✅ ¿Qué son las clases de excepción en C++?
+Las clases de excepción son tipos especiales de clases que se usan para representar errores o situaciones excepcionales en un programa.
+Cuando algo sale mal (por ejemplo, división por cero, archivo no encontrado, etc.), puedes "lanzar" (throw) una excepción, y después "atraparla" (catch)
+para manejar el error sin que el programa se caiga.
+
+Hereda de:
+std::exception, (recomendado) o alguna de sus hijas 
+std::runtime_error, 
+std::invalid_argument, etc.
+
+Puedes crear tus propias clases de excepción si querés errores más específicos y personalizados.
+No necesitan estar en Orthodox Canonical Form, porque no manejan recursos complejos.
+
+
+esta clase puede ir aparte o se puede agregar dentro de una clase principal
+
+💡 Cuando la asignamos entro de la clase. Dentro de los miembros publicos agregamos
+
+----DEFINICION DE LA EXCEPCION----
+
+class GradeTooHighException : public std::exception 
+{
+	public:
+		const char* what() const throw();
+};
+
+📌 'class' --> agrago la palabra CLASS
+📌 'GradeTooHighException' -->nombre de la clase
+📌 ': public std::exception' --> significa que esta clase es una subclase de std::exception.
+es esencial para que pueda ser lanzada (throw) y capturada (catch) como cualquier excepción estándar.
+(en otros Cependant, habiamos hecho 'class FragTrap : public ClapTrap')
+
+📌'const char*' --> va a devolver un puntero a un string
+📌'what()' --> funcion heredada de std::exception. vSiempre se llama what(). Es lo que C++ usa para imprimir el mensaje de una excepción.
+📌'const' --> Es obligatorio para que coincida exactamente con la definición en std::exception.
+📌'throw()' --> Significa: "esta función no lanza excepciones". equivalente a noexcept
+
+
+
+----DECLARACION DE LA EXCEPCION----
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() 
+{
+    return "Grade is too high!";
+}
+
+📌 'const char*' --> igual que en la definicion
+📌 'Bureaucrat::' --> clase padre
+📌 'GradeTooHighException::' --> clase derivada. what() pertenece a la derichada que a su vex pertenece a la parent
+📌 'const' --> no se va a modificar ningun miembro privado
+📌 'throw()' -->  es obligatorio porque la función base std::exception::what() lo tiene
+
+-----USABILIDAD DE LA CLASE DE EXCEPCION----
+
+THROW
+
+dentro de alguna funcion donde se deba corroborar:
+
+if(grade < 1)
+		throw GradeTooLowException();
+	
+📌'throw' --> lanza una excepción. Es como decir: "¡Ocurrió un error grave! Detené lo que estabas haciendo y saltá al bloque catch 
+que pueda manejar este tipo de error."
+Cuando se ejecuta throw, el flujo normal del programa se interrumpe y se empieza a buscar un bloque try-catch que pueda atrapar la excepción.
+
+
+BLOQUE TRY - CATCH
+
+Cuando lanzás una excepción con throw, C++ necesita saber qué hacer con ese error. Ahí entra el try - catch.
+
+va en main:
+
+try {
+    // Código que *puede* lanzar una excepción
+} catch (tipo_de_excepcion& e) {
+    // Código para manejar esa excepción
+}
+
+    try 
+    {
+        Bureaucrat b("Pepe", 200); // ❌ grade inválido → lanza una excepción (si fuera 50 no habria problema)
+    } 
+    catch (std::exception &e)
+    {
+       std::cerr << "Exception: " << e.what() << std::endl; //o cout???
+    }
+
+🧠 catch (TipoDeExcepcion &nombreVariable)
+📌 '&e' → referencia a la excepción lanzada, y 'e' es simplemente el nombre de la variable con la que vas a acceder a la excepción.
+
+¿Qué es un operador sobrecargado?
+Cuando hablamos de "sobrecargar" un operador en C++, significa que estamos definiendo 
+un nuevo comportamiento para un operador estándar (como +, -, <<, >>, etc.) 
+
+
+std::cout << First << std::endl; //“Llamá a mi operator<< personalizado con First como segundo parámetro.”
+recordar que el operador sobrecargado tiene como parametros:
+operator<<(std::ostream &out, const Bureaucrat &b)
+
+por ende espera recibir un objeto de la clase a la cual va a acceder a sus parametros por medio de los getter
+
+
+DEFAULT CONSTRUCTOR TIENE QUE PDOER ASIGNAR VALOR A LOS PARAMETROS PRIVADOS
+
+
+
+
+----EX01----
+
+
+✅ que pasa cuando tenemos CONSt en los atributos privados??
+
+no pueden asignarse en el cuerpo del constructor.
+Solo pueden inicializarse una vez, y debe ser en la lista de inicialización del constructor, justo después de los dos puntos :.
+
+❗ y como hacemos en el copy assignment operator? (=)
+
+❌this->_gradeToSign = copy.getGradeToSign();
+❌this->_gradeToExecute = copy.getGradeToExecute();
+
+No podés asignar nuevos valores a los miembros const, por lo tanto: Lo que se hace en la práctica es copiar solo los miembros que sí son modificables, 
+y dejar los const como están desde la construcción original.
+
+❗y con el copy constructor?
+Aca no hay problema porque el nuevo objeto se crea apartir del otro
+
+
+
+
+----EX03----
+
+
+
+alternativa a IF / ELSE IF
+
+cuando necesitamos encadenar un if con un string and una accion. podemos hacerlo creando dos arrays
+
+1) el primer array tendra los nombres que espera recibir, con los que va a hacer la comparacion "if (target == "robotomy request")"
+
+const std::string formNames[] = {"presidental pardon", "robotomy request", "shrubbery creation"};
+
+2) el segundo va a ser un array de funciones que tenemos que crear como auxiliares.
+estas funciones solo aparecen en el file en cuestion y no se declaran en ningun header
+
+AForm* (*formCreator[])(const std::string _target) = {CreateShrubbery, CreateRobotomy, CreatePardon};
+	
+	
+3) Luego hacer uno for loop:
+
+	for (int i = 0; i < 3; i++)
+	{
+		if(formNames[i] == form)
+		{
+			std::cout << "Intern creates " << form << std::endl;
+			return (formCreator[i](target));
+		}
+	}
+	std::cerr << RED << "ERROR404: ✗ form not found ✗" << RESET << std::endl;
+
+4)los helpers:
+
+AForm* CreateRobotomy(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+
+

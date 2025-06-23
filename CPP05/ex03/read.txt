@@ -1,0 +1,32 @@
+alternativa a IF / ELSE IF
+
+cuando necesitamos encadenar un if con un string and una accion. podemos hacerlo creando dos arrays
+
+1) el primer array tendra los nombres que espera recibir, con los que va a hacer la comparacion "if (target == "robotomy request")"
+
+const std::string formNames[] = {"presidental pardon", "robotomy request", "shrubbery creation"};
+
+2) el segundo va a ser un array de funciones que tenemos que crear como auxiliares.
+estas funciones solo aparecen en el file en cuestion y no se declaran en ningun header
+
+AForm* (*formCreator[])(const std::string _target) = {CreateShrubbery, CreateRobotomy, CreatePardon};
+	
+	
+3) Luego hacer uno for loop:
+
+	for (int i = 0; i < 3; i++)
+	{
+		if(formNames[i] == form)
+		{
+			std::cout << "Intern creates " << form << std::endl;
+			return (formCreator[i](target));
+		}
+	}
+	std::cerr << RED << "ERROR404: ✗ form not found ✗" << RESET << std::endl;
+
+4)los helpers:
+
+AForm* CreateRobotomy(std::string target)
+{
+	return new RobotomyRequestForm(target);
+}

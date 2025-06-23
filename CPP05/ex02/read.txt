@@ -1,0 +1,15 @@
+✅ que pasa cuando tenemos CONSt en los atributos privados??
+
+no pueden asignarse en el cuerpo del constructor.
+Solo pueden inicializarse una vez, y debe ser en la lista de inicialización del constructor, justo después de los dos puntos :.
+
+❗ y como hacemos en el copy assignment operator? (=)
+
+❌this->_gradeToSign = copy.getGradeToSign();
+❌this->_gradeToExecute = copy.getGradeToExecute();
+
+No podés asignar nuevos valores a los miembros const, por lo tanto: Lo que se hace en la práctica es copiar solo los miembros que sí son modificables, 
+y dejar los const como están desde la construcción original.
+
+❗y con el copy constructor?
+Aca no hay problema porque el nuevo objeto se crea apartir del otro
