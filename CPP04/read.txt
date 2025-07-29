@@ -19,6 +19,12 @@ Una función virtual pura se define con = 0 al final de su declaración.
 
 virtual void makeSound() const = 0; // Ahora es una clase abstracta
 
+no es random la funcion que declaro virtual, sino que la que elija implica que todas las clases derivadas 
+deben implementar esta misma función con exactamente la misma firma
+
+cuando defino una funcion como derivada, esta NO tiene que definirse en la clase parent. Solo se declara
+
+
 ✅¿puedo hacerlo con otra funcion?
 Sí, sería lo mismo en el sentido de que haría que Animal siguiera siendo una clase abstracta, ya que tendría al menos un método virtual puro (= 0).
 
