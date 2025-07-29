@@ -1,0 +1,60 @@
+📌 ¿Qué es un template en C++?
+Un template en C++ es una forma de escribir funciones (o clases) genéricas, es decir, que pueden trabajar con cualquier tipo de dato 
+(int, float, std::string, clases personalizadas, etc.), sin necesidad de escribir una versión distinta para cada tipo.
+
+✅ ¿Qué implica esto para tu consigna?
+No debes escribir funciones separadas para int, float, etc.
+En cambio, escribirás una sola versión genérica que el compilador adaptará automáticamente al tipo correcto cuando se llame.
+
+⚠️
+Ambos parámetros de las funciones deben ser del mismo tipo (int, float, std::string, etc.).
+Ese tipo debe permitir usar operadores como: ==, <, >, etc. (para min y max)
+
+🔹 Si es una función libre (como swap, min, max) y no pertenece a una clase:
+Entonces no va dentro de una clase. Va directamente en el header, como funciones globales, usando template<typename T> antes de cada definición.
+
+🧩
+#pragma once
+
+template <typename T>            --> "Esta función puede usarse con cualquier tipo T que me pases".
+void swap(T& a, T& b)            --> T = generic template parameter
+{
+    // cuerpo
+}
+
+template <typename T>
+T min(const T& a, const T& b) 
+{
+    return (a < b ? a : b);      --> el '<' ya esta automaticamente definido para  int, double, char y std::string. si lo quiero usar con otro, debo sobrecargarlo
+    return (a < b) ? a : ((a == b) ? b : b);    --> esto es redundante
+}
+
+template <typename T>
+T max(const T& a, const T& b) 
+{
+    // cuerpo
+}
+
+🧩 ¿Cuál es la diferencia entre .cpp y .tpp?
+.cpp: tengo que incluir el header y en el make file se compila cada .cpp por separado
+.tpp: Los templates se "generan" recién cuando los usás (ej: Array<int>). Si la pusiste en un .cpp, no la ve → da error.
+
+
+
+Operator+ cuando trabajamos con pointers
+
+⚠️ this->_ptr = copy._ptr;
+solo copia el puntero y no el contenido
+
+
+¿Cómo debería ser realmente?
+Cuando haces asignación, tenés que:
+
+Liberar la memoria que tenía el objeto destino (this->_ptr) para evitar fugas.
+
+Asignar un nuevo bloque de memoria para almacenar la copia.
+
+Copiar elemento por elemento desde el objeto fuente (copy).
+
+Actualizar el tamaño (_size).
+
