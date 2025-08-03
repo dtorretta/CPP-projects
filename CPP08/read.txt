@@ -1,0 +1,84 @@
+*std::vector* es parte de la STL y funciona como un array dinámico.
+A diferencia de un array tradicional (int arr[10]), el vector puede crecer o reducir 
+su tamaño en tiempo de ejecución.
+podés agregar más números cuando quieras con *.push_back()*
+
+🧩 typename T::iterator easyfind(T& container, int value) 
+
+lo importante aca es que el retorno es un algoritmo "iterator"
+Queremos devolver un iterador que apunta al número buscado dentro del contenedor.
+RETORNA UN POINTER
+
+⚠️ container.end() --> no es el ultimo elemento del array sino el NULL final
+
+✅ ITERADOR == equivale a puntero en C
+
+
+📌 algoritmos usados:
+- ::iterator   --> retorna un iterator
+- std::find
+- std::distance
+- std::sort
+- std::min_element
+- std::max_element
+- .insert      -->  _Array.insert(_Array.end(), begin, end);   donde begin y end son pointer de otro vector
+- std::adjacent_difference  --> (begin, end, temporal vector donde almacenar las distancias)
+- .erase       --> (begin) para eliminar el primer elemento
+
+	
+📌 container usados:
+
+- std::vector<int> NAME;   --> array de int
+- std::list<int> myList;    --> double linked list
+- std::stack
+
+
+🧱 ¿Qué es std::stack?
+std::stack es un contenedor adaptador, o sea:
+🔹 No guarda los datos directamente,
+🔹 Usa otro contenedor por debajo para almacenar los elementos (como un std::vector o std::deque),
+🔹 Ese contenedor interno se llama c, y está marcado como protected.
+
+Este c no es visible desde afuera si solo usás std::stack, ¡pero si hacés herencia, podés acceder a él!
+
+✅ Operaciones principales:
+push(x) → mete un elemento al tope.
+pop() → saca el elemento del tope.
+top() → accede al elemento del tope. es decir, el ultimo elemento insertado
+size() → cantidad de elementos.
+
+
+Dentro de los contenedores estándar de C++ como std::vector, std::deque, std::list, etc., 
+ya vienen definidos tipos de iteradores con nombres estándar. Es parte del diseño del STL.
+
+std::vector<int>::iterator              // iterador mutable (puede modificar elementos)  --> puntero normal
+std::vector<int>::const_iterator        // iterador constante (solo lectura)   --> igual que el anterior pero solo lectura
+std::vector<int>::reverse_iterator      // iterador que va hacia atrás (rbegin(), rend())  -->  puntero que va de atras para adelante
+std::vector<int>::const_reverse_iterator// reverso solo lectura  --> igual que el anterior pero solo lectura
+
+Los contenedores también tienen funciones como:
+
+begin()
+end()
+rbegin()
+rend()
+
+
+typedef typename std::stack<T>::container_type::iterator it;
+
+typedef crea un apodo. 
+IT ahora es un alias para el tipo iterador del contenedor interno del stack.
+me ahorro de escribir toda la linea larga y solo escribo ahora it
+
+        
+🔁 ¿Qué hace un reverse_iterator?
+Un reverse_iterator recorre el contenedor de atrás hacia adelante.
+
+Por ejemplo, si tenés este contenedor:
+
+std::vector<int> v = {10, 20, 30};
+
+v.begin() apunta a 10
+v.end() apunta después de 30 (a un elemento inválido)
+v.rbegin() apunta a 30 ✅
+v.rend() apunta antes de 10 (también inválido, marca el fin del reverso)
