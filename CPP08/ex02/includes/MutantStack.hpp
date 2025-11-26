@@ -14,8 +14,12 @@
 #define RESET	"\033[0m"
 
 /*
+std::stack No permite iterar sobre sus elementos (no tiene iteradores) pero si pueden crearse
+y eso es lo que se hace en este proyecto
+
 "Write a MutantStack class. It will be implemented in terms of a std::stack."
-heredamos de una clase starndart por lo que no necesitamos escribir de 0 todo como el constructor, etc 
+heredamos de una clase standart, por lo que NO necesitamos escribir de 0 todo como el constructor, etc.
+It will offer all its member functions, plus an additional feature: iterators.
 Cuando una clase ya te ofrece toda la funcionalidad que querés (en este caso, std::stack), y solo necesitás agregar algo más, 
 como iteradores, la solución natural y eficiente es heredarla.
 */
@@ -31,7 +35,7 @@ class MutantStack : public std::stack<T>
 		typedef typename std::stack<T>::container_type::const_reverse_iterator const_rev_it;
 		
 		//Member fuctions
-		iterator begin() {return std::stack<T>::c.begin();} 
+		iterator begin() {return std::stack<T>::c.begin();}  // iterator *begin()* el nombre se lo doy yo. lo que es standar es c.begin()
 		iterator end() {return std::stack<T>::c.end();}
 
 		const_it begin() const {return std::stack<T>::c.begin();}

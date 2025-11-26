@@ -27,9 +27,9 @@ class NoOccurrence : public std::exception //no puedo agregarlo dentro del templ
 };
 		
 template <typename T> // T representa el tipo del contenedor. ej: std::vector<int>
-typename T::iterator easyfind(T& container, int value) 
+//this returns an specific element in position '*it' of the container 'T'
+typename T::iterator easyFind(T &container, int value) 
 {
-    //esto equivale a decir *it = 
     typename T::iterator it = std::find(container.begin(), container.end(), value);
     if(it == container.end())
         throw NoOccurrence();
@@ -37,9 +37,7 @@ typename T::iterator easyfind(T& container, int value)
 }
 
 /*escribir "typename T" es basicamente el comodin
-lo importante aca es que el retorno es un algoritmo "iterator"
 Queremos devolver un iterador que apunta al número buscado dentro del contenedor.
-RETORNA UN POINTER
 
 container.end() --> no es el ultimo elemento del array sino el NULL final
 

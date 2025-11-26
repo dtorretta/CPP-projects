@@ -1,4 +1,4 @@
-NAME = EasyFind
+NAME = easyFind
 
 SRC	=   sources/main.cpp
 
@@ -13,7 +13,7 @@ all: $(NAME)
 
 $(NAME):		$(OBJS)
 	@$(CPP) $(CPP_FLAGS) $(INC) $(OBJS) -o $(NAME)
-	@echo "\n✨ Easy find is ready.\n"
+	@echo "\n✨ easyFind is ready.\n"
 
 %.o: %.cpp
 	@$(CPP) $(CPP_FLAGS) -c -o $@ $<

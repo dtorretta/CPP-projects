@@ -12,22 +12,24 @@
 #define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
-template <typename T> //template <class T>
-void swap(T& a, T& b) 
+template <typename T>
+void swap(T &a, T &b)
 {
     T temp = a;
     a = b;
     b = temp;
 }
 
+//returns a references, not a copy
 template <typename T>
-T& min(T& a, T& b) //necesito que sea & para que el retorno no cree un objeto sino que sea un pointer a A o B.
+T& min(T &a, T &b)
 {
     return (a < b) ? a : b; 
 }
 
+//returns a references, not a copy
 template <typename T>
-T& max(T& a, T& b) 
+T& max(T& a, T& b)
 {
     return (a > b) ? a : b;
 }

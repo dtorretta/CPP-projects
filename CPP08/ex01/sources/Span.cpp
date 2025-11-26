@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/07/31 14:08:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/24 19:46:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ unsigned int Span::getSize(void) const
 
 void Span::printElements() const 
 {
+    std::cout << YELLOW << "Vector's elements:" << RESET << std::endl;
     for (size_t i = 0; i < _Array.size(); ++i)
         std::cout << _Array[i] << std::endl;
 }

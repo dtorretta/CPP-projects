@@ -1,6 +1,7 @@
-NAME = whatever
+NAME = PmergeMe
 
-SRC	=   sources/main.cpp
+SRC	=   sources/PmergeMe.cpp \
+		sources/main.cpp
 
 INC =   -I ./includes/
    
@@ -13,7 +14,7 @@ all: $(NAME)
 
 $(NAME):		$(OBJS)
 	@$(CPP) $(CPP_FLAGS) $(INC) $(OBJS) -o $(NAME)
-	@echo "\n✨ whatever is ready.\n"
+	@echo "\n✨ PmergeMe is ready.\n"
 
 %.o: %.cpp
 	@$(CPP) $(CPP_FLAGS) -c -o $@ $<

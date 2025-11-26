@@ -1,6 +1,7 @@
-NAME = whatever
+NAME = btc
 
-SRC	=   sources/main.cpp
+SRC	=   sources/BitcoinExchange.cpp \
+		sources/main.cpp
 
 INC =   -I ./includes/
    
@@ -13,7 +14,7 @@ all: $(NAME)
 
 $(NAME):		$(OBJS)
 	@$(CPP) $(CPP_FLAGS) $(INC) $(OBJS) -o $(NAME)
-	@echo "\n✨ whatever is ready.\n"
+	@echo "\n✨ btc is ready.\n"
 
 %.o: %.cpp
 	@$(CPP) $(CPP_FLAGS) -c -o $@ $<

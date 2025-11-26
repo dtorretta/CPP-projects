@@ -11,10 +11,10 @@ int main( void )
     MutantStack<int> mstack;
     mstack.push(5); //[5]
     mstack.push(17); //[5, 17]
-    std::cout << FORM << "\n✅ #1 print the top int (last added)\n" << RESET << std::endl;
+    std::cout << FORM << "\n✅ #1 add '5', then '17' and print the top int (last added)\n" << RESET << std::endl;
     std::cout << mstack.top() << std::endl;  //--> 17
-    mstack.pop(); //[5]
-    std::cout << FORM << "\n✅ #2 print the size\n" << RESET << std::endl;
+    mstack.pop(); //[7] removed --> [5]
+    std::cout << FORM << "\n✅ #2 remove the last one added and print the size\n" << RESET << std::endl;
     std::cout << mstack.size() << std::endl; //--> 1
     mstack.push(3); //[5, 3]
     mstack.push(5); //[5, 3, 5]
@@ -27,12 +27,12 @@ int main( void )
     std::cout << FORM << "\n✅ #3 print the stack\n" << RESET << std::endl;
     while (it != ite)
     {
-    std::cout << YELLOW << *it << RESET << std::endl; // --> [5, 3, 5, 737, 0]
-    ++it;
+        std::cout << YELLOW << *it << RESET << std::endl; // --> [5, 3, 5, 737, 0]
+        ++it;
     }
     
     std::cout << FORM << "\n✅ #4 creat a new stack as a copy of mstack\n" << RESET << std::endl;
-    std::stack<int> s(mstack); //is std::stack and no MutantStack --> i cant use .begin nor .end
+    std::stack<int> s(mstack); //the new stack 's' is type 'std::stack' and no 'MutantStack' --> i cant use iterations
     
     std::stack<int> copy = s; //create a copy to print it by deleting each element
     while (!copy.empty()) // --> [0, 737, 5, 3, 5]
@@ -49,10 +49,10 @@ int main( void )
     std::list<int> lstack;
     lstack.push_back(5); //[5]
     lstack.push_back(17); //[5, 17]
-    std::cout << FORM << "\n✅ #1 print the top int (last added)\n" << RESET << std::endl;
+    std::cout << FORM << "\n✅ #1 add '5', then '17' and print the top int (last added)\n" << RESET << std::endl;
     std::cout << lstack.back() << std::endl;  //--> 17
     lstack.pop_back(); //[5]
-    std::cout << FORM << "\n✅ #2 print the size\n" << RESET << std::endl;
+    std::cout << FORM << "\n✅ #2 remove the last one added and print the size\n" << RESET << std::endl;
     std::cout << lstack.size() << std::endl; //--> 1
     lstack.push_back(3); //[5, 3]
     lstack.push_back(5); //[5, 3, 5]
@@ -78,7 +78,7 @@ int main( void )
     rstack.push("World"); //["hello" "world"]
     rstack.push("!"); //["hello" "world" "!"]
     rstack.pop(); //["hello" "world"]
-    std::cout << FORM << "\n✅ #1 print the top int (last added)\n" << RESET << std::endl;
+    std::cout << FORM << "\n✅ #1 add 'hello', then add 'world' and print the top one (last added)\n" << RESET << std::endl;
     std::cout << rstack.top() << std::endl;  //--> world
     std::cout << FORM << "\n✅ #2 print the size\n" << RESET << std::endl;
     std::cout << rstack.size() << std::endl; //--> 2
@@ -86,7 +86,7 @@ int main( void )
     MutantStack<std::string>::rev_it rev_it = rstack.rbegin(); //*rev_it = world
     MutantStack<std::string>::rev_it rev_iter = rstack.rend(); //*ite = hello
 
-    std::cout << FORM << "\n✅ #3 print the stack\n" << RESET << std::endl;
+    std::cout << FORM << "\n✅ #3 print the stack using reverse iterator\n" << RESET << std::endl;
     while (rev_it != rev_iter)
     {
         std::cout << YELLOW << *rev_it << RESET << std::endl; // --> ["world" "hello"]

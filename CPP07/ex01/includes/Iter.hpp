@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib> //???????????
-#include <cctype> //???????????
-
+#include <cstdlib>
+#include <cctype>
 
 #define GREEN	"\033[32m"
 #define RED  	"\033[31m"
@@ -16,9 +15,30 @@
 #define RESET	"\033[0m"
 
 
-template <typename T, typename F> // si necesit una funcion tengo que agegar un segundo template
-void iter(T* array, size_t size, F func)  //seguimos usando * para direccion de memoria
+template <typename T, typename F> // si necesita una funcion tengo que agegar un segundo template
+void iter(T *array, const size_t length, F func)  //seguimos usando * para direccion de memoria
 {
-    for(size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < length; ++i)
         func(array[i]);
 }
+
+template <typename T>
+void printElement(const T& x) 
+{
+    std::cout << YELLOW << x << RESET;
+}
+
+template <typename T>  //no le puedo sacar esto porque lo necesita como parametro
+void increase(T &val)
+{
+    val++;
+}
+
+void upper(std::string &str)
+{
+    for(size_t i = 0; i < str.size(); ++i)
+        str[i] = std::toupper(static_cast<unsigned char>(str[i]));
+}
+
+
+

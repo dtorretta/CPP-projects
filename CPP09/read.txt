@@ -1,0 +1,120 @@
+ex00 --> map
+ex01 --> stack
+ex02 --> vector & deque
+
+std::string trim(const std::string &s);
+
+&s --> es una referencia constante a un std::string. NO es una copia, sino un alias que no puede ser modificado (porque es const)
+apunta a la memoria original.
+
+std::string trim(std::string s); --> SI ES UNA COPIA
+
+Usando const std::string & → evitas la copia y sigues seguro porque no puedes modificarlo.
+
+dentro de la funcion no estamos modificando nada sino que manejando bien el return para elegir que dejar afuera
+
+
+
+cuando trabajamos con av en c++ hay varias formas de escribir el tipo de la funcion que trabaja con este atributo
+1) void processOperation(const char* arg);
+2) void processOperation(char* arg);
+3) void processOperation(const std::string& arg);
+    en cuyo caso la llamada sería:
+    ProcessOperation(std::string(av[1]));
+    
+DIVIDE AND CONQUER
+
+    En C++ (y en casi todos los lenguajes que usan recursión), una llamada recursiva “detiene” la ejecución de la función actual hasta que la llamada recursiva retorne.
+Vamos a suponer que tenemos 20 números:
+
+1️⃣ Primera iteración (nivel 0)
+
+Entrada: 20 números.
+
+Paso 1: Formamos pares (a,b) → 10 pares.
+Paso 2: Identificamos el mayor de cada par → construimos sorted con 10 elementos (los mayores).
+Paso 3: Llamada recursiva: sortContainer(sorted) con esos 10 elementos.
+*En este momento, no se insertan los menores todavía, la inserción de los menores ocurre después de que la recursión haya ordenado la secuencia de mayores.*
+
+2️⃣ Segunda iteración (nivel 1, recursión)
+
+Entrada: sorted con 10 elementos.
+
+Paso 1: Formamos pares → 5 pares.
+Paso 2: Tomamos los mayores de cada par → construimos sorted con 5 elementos.
+Paso 3: Llamada recursiva: sortContainer(sorted) con 5 elementos.
+*Nuevamente, los menores de este nivel todavía no se insertan.*
+
+(...)
+
+4️⃣ Nivel base (último nivel)
+
+Entrada: sorted con 1 o 2 elementos.
+
+Caso base:
+    1 elemento → ya está ordenado.
+    2 elementos → se comparan y se ordenan directamente.
+
+*Ahora empezamos a salir de la recursión, y aquí es donde se insertan los menores de cada par en la secuencia ordenada.*
+
+5️⃣ Inserción de menores (al volver de la recursión)
+
+Cada llamada recursiva retorna una secuencia base ordenada de mayores.
+
+Los menores de esa llamada se insertan en posiciones correctas usando búsqueda binaria o algún método equivalente.
+
+Este proceso ocurre en orden inverso a la recursión:
+
+Nivel base → insert menores del último par
+Nivel 2   → insert menores de pares de 5 mayores
+Nivel 1   → insert menores de pares de 10 mayores
+Nivel 0   → insert menores de pares de 20 originales
+
+
+Así se asegura que cuando insertás un menor, la secuencia de mayores ya está ordenada, evitando comparaciones innecesarias.
+
+        int a = *it;
+        int b = *(it + 1); //asi accedo a la memoria dle sigueinte elemento
+        
+        
+        
+        
+una forma es:
+
+void print(std::vector<int> container = std::vector<int>()) const;
+
+la otra forma es sobrecargado la funcion , es decir, declararla dos veces, con el mismo nombre y las dos versiones, y cuando la llamo c++ entiende cual
+void print(std::vector<int> container = std::vector<int>()) const; //de esta forma puedo llamar con o sin argumento
+
+
+
+TRY AND CATCH
+
+El catch captura por tipo, no por mensaje.
+try{}
+catch (const NoOccurrence &e) {}    --> ⚠️ Esto captura solo excepciones del tipo NoOccurrence (o derivadas de ella).
+
+si en mi clase defino mas tipos de errores(ex: class IndexError : public std::exception), el catch (const NoOccurrence &e) {}
+no lo capturara
+
+otra forma es tener varios catch
+
+
+try {
+    // código
+}
+catch (const NoOccurrence &e) {
+    std::cerr << e.what();
+}
+catch (const IndexError &e) {
+    std::cerr << e.what();
+}
+catch (const std::exception &e) {
+    std::cerr << "Otro error: " << e.what();
+}
+
+⚠️El orden importa⚠️
+C++ captura el primer catch compatible que encuentra.
+
+esto sirve cuando necesitás hacer cosas distintas según el error.
+
