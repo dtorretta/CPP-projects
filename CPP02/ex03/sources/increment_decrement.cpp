@@ -1,29 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   increment_decrement.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 08:56:36 by dtorrett          #+#    #+#             */
+/*   Updated: 2025/03/10 08:56:36 by dtorrett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Fixed.hpp"
 
 /*****INCREMENT / DECREMENT OPERATORS*****/	
-
 Fixed Fixed::operator++() //pre-increment
 {
-    this->_fixedPointNumber += 1;
-    return (*this);
+	this->_fixedPointNumber += 1;
+	return (*this);
 }
 
 Fixed Fixed::operator++(int) //post-increment
 {
-    Fixed temp = *this;
-    this->_fixedPointNumber += 1;
-    return (temp);
+	Fixed temp = *this;
+	this->_fixedPointNumber += 1;
+	return (temp);
 }
 
 Fixed Fixed::operator--() //pre-decrement
 {
-    this->_fixedPointNumber -= 1;
-    return (*this);
+	this->_fixedPointNumber -= 1;
+	return (*this);
 }
 
 Fixed Fixed::operator--(int) //post-decrement
 {
-    Fixed temp = *this;
-    this->_fixedPointNumber -= 1;
-    return (temp);
+	Fixed temp = *this;
+	this->_fixedPointNumber -= 1;
+	return (temp);
 }

@@ -55,7 +55,7 @@ class Form
 		int getGradeToExecute() const;
 		bool getSigned() const;
 		
-		void beSigned(Bureaucrat &b); //NO necesito hacer herencia, solo decflarar los headers para que puedan acceder
+		void beSigned(Bureaucrat &b);
 };
 		
 std::ostream& operator<<(std::ostream &out, const Form &f);

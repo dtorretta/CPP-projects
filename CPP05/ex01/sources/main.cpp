@@ -32,7 +32,7 @@ int main()
             std::cout << std::endl;
             
             Form secondForm ("NVM-0: Nevermind Declaration", 15, 15);
-            std::cout << secondForm << std::endl; //esta bien asi???
+            std::cout << secondForm << std::endl;
             
             std::cout << FORM << "\n❌ #3 Bureocrat tries to sign the first form and fails\n" << RESET << std::endl;
             B.signForm(firstForm);
@@ -49,9 +49,6 @@ int main()
         {
             std::cerr << RED << "\nCaught an unknown exception!" << RESET << std::endl;
         }
-        /*Cuando se lanza una excepción con throw, c++ destruye automáticamente todos los objetos locales (stack-allocated) 
-        creados en el bloque try, hasta el punto donde ocurrió la excepción.
-        luego salta al bloque catch, por eso primero se imprime el destructor*/
     }
     std::cout << "\n--------------------------------------------------------------"  << std::endl;
     std::cout << "                         TEST 2"  << std::endl;
@@ -127,7 +124,7 @@ int main()
         {
             std::cout << FORM << "\n✅ #1 create a first Form.\n" << RESET << std::endl;
             Form firstForm ("42-B: Existential Approval Request", 5, 5);
-            std::cout << firstForm << std::endl; //esta bien asi??? 
+            std::cout << firstForm << std::endl;
             
             std::cout << FORM << "\n✅ #2 create a second Form.\n" << RESET << std::endl;
             Form secondForm ("NVM-0: Nevermind Declaration", 15, 15);

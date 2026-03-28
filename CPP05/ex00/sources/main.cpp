@@ -45,10 +45,6 @@ int main()
         {
             std::cerr << RED << "\nCaught an unknown exception!" << RESET << std::endl;
         }
-        
-        /*Cuando se lanza una excepción con throw, c++ destruye automáticamente todos los objetos locales (stack-allocated) 
-        creados en el bloque try, hasta el punto donde ocurrió la excepción.
-        luego salta al bloque catch, por eso primero se imprime el destructor*/
     }
     std::cout << "\n--------------------------------------------------------------"  << std::endl;
     std::cout << "                         TEST 2"  << std::endl;

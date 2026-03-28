@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 22:50:16 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/19 15:49:23 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Cat& Cat::operator=(const Cat& copy)
 		Animal::operator=(copy);
 		std::cout << GREEN << "Cat Copy Operator called" << RESET << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 // Destructor

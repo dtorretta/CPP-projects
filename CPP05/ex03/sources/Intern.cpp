@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/23 21:09:34 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:53:30 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Intern& Intern::operator=(const Intern& copy)
 {
 	(void)copy; // Nothing to copy
 	std::cout << "Intern Copy Operator called" << std::endl;
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -47,7 +47,7 @@ Intern::~Intern()
 const char* Intern::NonExistingFormException::what() const throw()
 {
 	std::cerr << RED << "ERROR404: ✗ form not found ✗" << RESET << std::endl;
-	return NULL; //nunca se ejecuta pero calma el flag
+	return NULL;
 }
 
 AForm* CreateShrubbery(std::string target)

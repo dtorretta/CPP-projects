@@ -10,7 +10,7 @@ void PhoneBook::ft_add()
 	newCont.get_phone();
 	newCont.get_secret();
 
-	this->index = (this->index + 1) % 8; // Incrementa el índice y vuelve a 0 si llega a 8
+	this->index = (this->index + 1) % 8;
 	this->contact[this->index] = newCont;
 
 	std::cout << "\033[32m\nContact added successfully!\033[0m" << std::endl;

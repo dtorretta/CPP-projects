@@ -58,52 +58,24 @@ class PmergeMe
 template <typename T>
 void printContainer(const T &container)
 {
-    typename T::const_iterator it = container.begin();
-    typename T::const_iterator end = container.end();
+	typename T::const_iterator it = container.begin();
+	typename T::const_iterator end = container.end();
 
-    for (; it != end; ++it)
-        std::cout << *it << " ";
+	for (; it != end; ++it)
+		std::cout << *it << " ";
 
-    std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 template <typename C>
 bool isSorted(const C& container)
 {
-    for (typename C::const_iterator it = container.begin(); it + 1 != container.end(); ++it)
-    {
-        if (*it > *(it + 1))
-            return false;
-    }
-    return true;
+	for (typename C::const_iterator it = container.begin(); it + 1 != container.end(); ++it)
+	{
+		if (*it > *(it + 1))
+			return false;
+	}
+	return true;
 }
-
-/*
-TEMPLATES
-los agregamos en el header por fuera de la clase.
-para facilitarnos la vida y poder usarlo en el main sin crear tantos getters, cree dentro de la case la funcion 'print' que se apoya en el template.
-
-
-INICIALIZACION AUTPOMATICA DE ATRIBUTOS PRIVADOS
-
--Con un constructor por defecto vacío (RPN()) tus atributos como _operation se inicializan correctamente 
-y vacíos si son tipos STL que tienen constructor por defecto.
-
--Tipos primitivos (int, float, double, char, punteros crudos, bool, etc.): 
-Estos NO se inicializan automáticamente si usás un constructor por defecto vacío.
-
-
-LLAMAR UNA MISMA FUNCION CON DIFERENTE CANTIDAD DE PARAMETROS EN CADA LLAMADA
-
-
-una forma es:
-
-void print(std::vector<int> container = std::vector<int>()) const;
-
-la otra forma es sobrecargado la funcion , es decir, declararla dos veces, con el mismo nombre y las dos versiones, y cuando la llamo c++ entiende cual
-void print(std::vector<int> container = std::vector<int>()) const; //de esta forma puedo llamar con o sin argumento
-
-
-*/
 
 

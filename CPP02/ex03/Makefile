@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = BSP
 
 SRC	=   sources/Fixed.cpp \
 		sources/arithmetic.cpp \
@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME):		$(OBJS)
 	@$(CPP) $(CPP_FLAGS) $(INC) $(OBJS) -o $(NAME)
-	@echo "\n✨ Fixed 4.0 ready.\n"
+	@echo "\n✨ BSP ready.\n"
 
 %.o: %.cpp
 	@$(CPP) $(CPP_FLAGS) -c -o $@ $<

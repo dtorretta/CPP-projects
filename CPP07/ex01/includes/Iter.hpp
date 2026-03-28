@@ -15,8 +15,8 @@
 #define RESET	"\033[0m"
 
 
-template <typename T, typename F> // si necesita una funcion tengo que agegar un segundo template
-void iter(T *array, const size_t length, F func)  //seguimos usando * para direccion de memoria
+template <typename T, typename F>
+void iter(T *array, const size_t length, F func)
 {
     for (size_t i = 0; i < length; ++i)
         func(array[i]);
@@ -28,7 +28,7 @@ void printElement(const T& x)
     std::cout << YELLOW << x << RESET;
 }
 
-template <typename T>  //no le puedo sacar esto porque lo necesita como parametro
+template <typename T>
 void increase(T &val)
 {
     val++;

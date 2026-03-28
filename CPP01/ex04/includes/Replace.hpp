@@ -23,9 +23,9 @@ class Replace
 	public:
 		Replace(const std::string file, const std::string s1, const std::string s2);
 		std::string getString (const std::string str);
-		std::string ft_replace (const std::string line); //const?
-		
+		std::string ft_replace (const std::string line);
+
 };
-		
+
 #endif
 

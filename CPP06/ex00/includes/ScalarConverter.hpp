@@ -24,11 +24,11 @@
 
 class ScalarConverter
 {
-	private: //como no las voy a usar las dejo en privado
-		ScalarConverter(); // Default constructor
-		ScalarConverter(const ScalarConverter& copy); // Copy constructor 
-		ScalarConverter& operator=(const ScalarConverter&); // Copy assignment operator
-		~ScalarConverter(void);
+	private:
+		// ScalarConverter(); // Default constructor
+		// ScalarConverter(const ScalarConverter& copy); // Copy constructor 
+		// ScalarConverter& operator=(const ScalarConverter&); // Copy assignment operator
+		// ~ScalarConverter(void);
 		
 	public:
 		static void convert(std::string str);

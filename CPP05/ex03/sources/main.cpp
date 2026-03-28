@@ -31,7 +31,7 @@ int main()
             
             std::cout << FORM << "\n✅ #2 create form1 and test the makeform function with \'Presidental Pardon\'\n" << RESET << std::endl;
             AForm* form1 = someRandomIntern.makeForm("presidental pardon", "Bender");
-            std::cout << "\n" << *form1 <<  "\n" << std::endl; //tengo que desferenciarlo xq sino imprime un puntero a la direccion de memoria
+            std::cout << "\n" << *form1 <<  "\n" << std::endl;
             delete form1;
         }
         catch (std::exception &e)
@@ -42,9 +42,6 @@ int main()
         {
             std::cerr << RED << "\nCaught an unknown exception!" << RESET << std::endl;
         }
-        /*Cuando se lanza una excepción con throw, c++ destruye automáticamente todos los objetos locales (stack-allocated) 
-        creados en el bloque try, hasta el punto donde ocurrió la excepción.
-        luego salta al bloque catch, por eso primero se imprime el destructor*/
     }
     std::cout << "\n--------------------------------------------------------------"  << std::endl;
     std::cout << "                         TEST 2"  << std::endl;
@@ -106,7 +103,7 @@ int main()
 
             std::cout << FORM << "\n❌ #2 create form1 and test the makeform function with \'Random Request\'\n" << RESET << std::endl;
             AForm* form4 = someRandomIntern.makeForm("random request", "Bender");
-            std::cout << "\n" << *form4 <<  "\n" << std::endl; //no llega a ejecutarse porque salta la excepcion
+            std::cout << "\n" << *form4 <<  "\n" << std::endl;
             delete form4;
         }
         catch (std::exception &e)

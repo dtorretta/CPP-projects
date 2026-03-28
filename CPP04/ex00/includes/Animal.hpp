@@ -27,21 +27,9 @@ class Animal
 		Animal& operator=(const Animal& copy); // Copy assignment operator
 		virtual ~Animal(void);
 
-		virtual void makeSound(void) const; //cada clase va a tener su propia funcion
-		virtual std::string getType() const; //cada clase va a tener su propia funcion
+		virtual void makeSound(void) const;
+		virtual std::string getType() const;
 };
 		
 #endif
 
-/*
-Makesound y getType son virtuales porque si no lo fuera, cuando intente llamar a la funcion dentro de dog, solo va a usar la de ANIMAL
-
-como contrapartida, en la funciond entro de cada clase tambien le ponemos virtual
-
-DESTRUCTOR
-Cuando usas delete en un puntero a la clase base (Animal*), si el destructor no es virtual, 
-solo se ejecuta el destructor de Animal, ignorando el destructor de Dog o Cat.
-
-
-
-*/

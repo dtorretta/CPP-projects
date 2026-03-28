@@ -2,7 +2,6 @@
 #include <iostream>
 #include <ctime> 
 
-/*las variables que son static en la clase, se tinene que declarar de forma global*/
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
@@ -31,7 +30,7 @@ int	Account::getNbWithdrawals( void )
 void Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-	std::cout << "accounts:" << getNbAccounts() << ";"; //como estoy llamando a la funcion dentro de la misma clase, no pongo el Account::
+	std::cout << "accounts:" << getNbAccounts() << ";";
 	std::cout << "total:" << getTotalAmount() << ";";
 	std::cout << "deposits:" << getNbDeposits() << ";";
 	std::cout << "withdrawals:" << getNbWithdrawals() << std::endl;
@@ -107,7 +106,7 @@ void	Account::_displayTimestamp( void )
 
 Account::Account( int initial_deposit )
 {
-	_accountIndex = _nbAccounts++; //le asigna el valor actual y luego incrementa
+	_accountIndex = _nbAccounts++;
 	_amount = initial_deposit;
 	_totalAmount += initial_deposit;
 	_nbDeposits = 0; 
@@ -119,23 +118,21 @@ Account::Account( int initial_deposit )
 	std::cout << "created" << std::endl;
 }
 
-Account::~Account( void ) //lo hace por cada llamada
+Account::~Account( void )
 {
 	_displayTimestamp();
-	_nbAccounts--; //tiene que llegar a 0
+	_nbAccounts--;
 	
-	std::cout << "index:" << _accountIndex << ";"; //es el individual //es necesario el tyhis??
+	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "closed" << std::endl;
 	
-	_totalAmount -= _amount; //tiene que llegar a 0
+	_totalAmount -= _amount;
 }
 
 /*
-las variables estáticas se comparten entre todas las instancias de la clase, por lo que se deben inicializar fuera del constructor.
-
-➜ ./account >> check.log
-➜ sed 's/^[^]]*] //' check.log > file1.log     
-➜ sed 's/^[^]]*] //' 19920104_091532.log > file2.log
-➜ ex02 diff file1.log file2.log
+./account >> check.log
+sed 's/^[^]]*] //' check.log > file1.log     
+sed 's/^[^]]*] //' 19920104_091532.log > file2.log
+diff file1.log file2.log
 */

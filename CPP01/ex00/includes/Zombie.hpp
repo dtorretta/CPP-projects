@@ -17,13 +17,11 @@ class Zombie
 		
 	public:
 		void announce( void ); 
-		Zombie(std::string zombie_name); //porque si name es privada, ouedo asignarle valor con esta fx
-		//Zombie* newZombie( std::string name );
-		//void randomChump( std::string name );
+		Zombie(std::string zombie_name);
 		~Zombie( void ); 
 };
 
-Zombie* newZombie( std::string name ); //poque esta fuera de la clase?
-void randomChump( std::string name );//poque esta fuera de la clase?
+Zombie* newZombie( std::string name );
+void randomChump( std::string name );
 		
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:39:29 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:42:45 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 Bureaucrat::Bureaucrat() : _name("unnamed")
 {
 	_grade = 150;
-	std::cout << "Bureaucrat Default Constructor called" << std::endl; //puedo ponerlo afuera
+	std::cout << "Bureaucrat Default Constructor called" << std::endl;
 }
 
 // Constructor
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
 	if(grade < 1)
-		throw GradeTooHighException(); //nunca finaliza el constructor asi que el objeto no se crea
+		throw GradeTooHighException();
 	else if(grade > 150)
 		throw GradeTooLowException();
 	else
 		_grade = grade;
-	std::cout << "Bureaucrat Constructor called" << std::endl; //puedo ponerlo afuera
+	std::cout << "Bureaucrat Constructor called" << std::endl;
 }
 
 // The copy constructor creates a new object as a copy of an existing object.
@@ -46,7 +46,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 		this->_grade = copy.getGrade();
 		std::cout << "Bureaucrat Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -104,8 +104,8 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 //overload <<
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &b) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const Bureaucrat &b)
 {
     out << YELLOW << b.getName()  << ", bureaucrat grade " << b.getGrade() << "." << RESET;
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+    return(out);
 }

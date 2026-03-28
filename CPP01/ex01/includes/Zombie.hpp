@@ -16,7 +16,6 @@ class Zombie
 {
 	private:
 		std::string _name;
-		int index;
 		
 	public:
 		Zombie();
@@ -26,6 +25,6 @@ class Zombie
 		void set_name(std::string zombie_name);
 };
 
-Zombie* zombieHorde( int N, std::string name ); //poque esta fuera de la clase?
+Zombie* zombieHorde( int N, std::string name );
 		
 #endif

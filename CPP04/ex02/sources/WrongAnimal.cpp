@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 14:33:47 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/19 15:58:14 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& copy)
 		this->_type = copy.getType();
 		std::cout << YELLOW << "WrongAnimal Copy Operator: Animal copied!" << RESET << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor

@@ -52,6 +52,7 @@ private:
 	static void	_displayTimestamp( void );
 
 	//el contructor trabaja con esto
+	//de forma predeterminada las inicie en 0 el conructor sin parametro pero creo que no haria falta
 	//estas son variables de instacia --> varian para cada objeto (nodo) que cree
 	//se inicializan dentro del constructor o directamente en su declaración si es necesario.
 	int				_accountIndex; //ok 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 22:49:44 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/19 15:49:35 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Dog& Dog::operator=(const Dog& copy)
 		Animal::operator=(copy);
 		std::cout << ORANGE << "Dog Copy Operator called" << RESET << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 // Destructor

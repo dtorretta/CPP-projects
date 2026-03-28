@@ -2,7 +2,7 @@
 
 
 Weapon::Weapon (const std::string &weapon) 
-		: _type(weapon) {} //el formato : _type(weapon)  solo se puede usar en contructors
+		: _type(weapon) {}
 
 void Weapon::setType (const std::string& new_weapon) 
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:43:50 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:53:19 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ Bureaucrat::Bureaucrat() : _name("unnamed")
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	if(grade < 1)
-		throw GradeTooHighException(); //nunca finaliza el constructor asi que el objeto no se crea
+		throw GradeTooHighException();
 	if(grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Bureaucrat Constructor called" << std::endl; //puedo ponerlo afuera
+	std::cout << "Bureaucrat Constructor called" << std::endl;
 }
 
 // The copy constructor creates a new object as a copy of an existing object.
@@ -45,7 +45,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 		this->_grade = copy.getGrade();
 		std::cout << "Bureaucrat Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -95,12 +95,12 @@ void Bureaucrat::signForm(AForm &f)
 	try
 	{
 		f.beSigned(*this);
-		std::cout << GREEN << getName() << " signed " << f.getName() << RESET << std::endl; //funciona??
+		std::cout << GREEN << getName() << " signed " << f.getName() << RESET << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << getName() << " couldn’t sign " << f.getName() << " because " << e.what() << ".\n" << RESET << std::endl;
-		throw GradeTooLowException(); //lo agregue aca, esta bien???
+		throw GradeTooLowException();
 	}
 }
 
@@ -130,8 +130,8 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 //overload <<
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &b) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const Bureaucrat &b)
 {
     out << YELLOW << b.getName()  << ", bureaucrat grade " << b.getGrade() << "." << RESET;
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+    return(out);
 }

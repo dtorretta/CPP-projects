@@ -33,7 +33,7 @@ int main( void )
     std::cout << std::endl;
     
     std::cout << "\nafter upper: \n";
-    iter(array2, 2, upper);  //no necesita el <> --> usamos '<>' para definir el tipo
+    iter(array2, 2, upper);
     iter(array2, 2, printElement<std::string>);
     std::cout << std::endl;
     

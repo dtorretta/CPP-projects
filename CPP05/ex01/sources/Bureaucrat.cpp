@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:41:20 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:43:46 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat() : _name("unnamed")
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	if(grade < 1)
-		throw GradeTooHighException(); //nunca finaliza el constructor asi que el objeto no se crea
+		throw GradeTooHighException();
 	if(grade > 150)
 		throw GradeTooLowException();
 	std::cout << "Bureaucrat Constructor called" << std::endl;
@@ -45,7 +45,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 		this->_grade = copy.getGrade();
 		std::cout << "Bureaucrat Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -115,8 +115,8 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 //overload <<
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &b) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const Bureaucrat &b)
 {
     out << YELLOW << b.getName()  << ", bureaucrat grade " << b.getGrade() << "." << RESET;
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+    return(out);
 }

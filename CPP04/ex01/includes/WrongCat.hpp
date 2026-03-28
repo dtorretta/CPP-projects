@@ -12,7 +12,7 @@
 #define RESET	"\033[0m"
 #define FORM    "\033[4m"
 
-class WrongCat : public WrongAnimal //NO USAMOS VIRTUAL
+class WrongCat : public WrongAnimal
 {
 	public:
 		WrongCat(); // Default constructor
@@ -26,7 +26,3 @@ class WrongCat : public WrongAnimal //NO USAMOS VIRTUAL
 
 	#endif
 	
-/*
-class WrongCat : public WrongAnimal
-le quitamos Virtual a la clase derivada	
-*/

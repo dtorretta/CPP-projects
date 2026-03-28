@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/03/21 21:55:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/19 15:56:48 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Brain& Brain::operator=(const Brain& copy)
 		}
 		std::cout << RED << "Brain Copy Operator called" << RESET << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 // Destructor
@@ -53,7 +53,7 @@ Brain::~Brain()
 	std::cout << RED << "Brain Destructor called" << RESET << std::endl;
 } 
 
-void Brain::setIdead(int i, std::string &idea) //porque la funcion no puede ser const?
+void Brain::setIdead(int i, std::string &idea)
 {
 	if(i >= 0 && i < 100)
 		this->_ideas[i] = idea;
@@ -63,6 +63,6 @@ std::string Brain::getIdead(int i)
 {
 	if(i >= 0 && i < 100)
 		return(_ideas[i]);
-	return(""); //sino retorna vacio
+	return("");
 }
 		

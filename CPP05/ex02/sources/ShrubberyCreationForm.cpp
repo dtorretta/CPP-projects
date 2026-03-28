@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:02:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:50:49 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 		this->_target = copy.getTarget();
 		std::cout << "ShrubberyCreationForm Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -60,7 +60,7 @@ std::string ShrubberyCreationForm::getTarget() const
 
 void ShrubberyCreationForm::execute() const
 {
-	std::ofstream file((getTarget() + "_shrubbery").c_str()); //para convertir std::string → const char*, compatible con C++98
+	std::ofstream file((getTarget() + "_shrubbery").c_str());
 	
 	if(file.is_open())
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 08:53:31 by dtorrett          #+#    #+#             */
+/*   Updated: 2025/03/10 08:53:31 by dtorrett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Fixed.hpp"
 
 const int Fixed::_fractionalBits = 8;
@@ -6,58 +18,50 @@ const int Fixed::_fractionalBits = 8;
 Fixed::Fixed(void) : _fixedPointNumber(0) {}
 
 // Constructor int to fixed-point value
-Fixed::Fixed(const int int_number) : _fixedPointNumber(int_number * (1 << _fractionalBits)) {} // multiplicado por 256
+Fixed::Fixed(const int int_number) : _fixedPointNumber(int_number * (1 << _fractionalBits)) {}
 
 // Constructor float to fixed-point value
 // The roundf function is used to round the result to the nearest integer.
-Fixed::Fixed(const float float_number) : _fixedPointNumber(roundf(float_number * (1 << _fractionalBits))) {} // multiplicado por 256
+Fixed::Fixed(const float float_number) : _fixedPointNumber(roundf(float_number * (1 << _fractionalBits))) {}
 
 // The copy constructor creates a new object as a copy of an existing object.
 Fixed::Fixed(const Fixed& src)
 {
-    //el lo mismo que hacer this->_fixedPointNumber = src.getRawBits();
-    *this = src; //llama al operador de asignación donde se va a ejecutar this->_fixedPointNumber = src.getRawBits()
-    //* desreferencia el pointer ya que la copy assignment operator retorna una objeto y no un pointer. 
+	*this = src;
 }
 
 Fixed::~Fixed() {}
 
-float Fixed::toFloat(void) const // Divide entre 256
+float Fixed::toFloat(void) const
 {
-    return ((float)this->_fixedPointNumber / (1 << _fractionalBits));
+	return ((float)this->_fixedPointNumber / (1 << _fractionalBits));
 }
 
-int Fixed::toInt( void ) const // Divide entre 256
+int Fixed::toInt( void ) const
 {
-    return (this->_fixedPointNumber / (1 << _fractionalBits));
+	return (this->_fixedPointNumber / (1 << _fractionalBits));
 }
 
 int Fixed::getRawBits() const
 {
-    return(this->_fixedPointNumber);
+	return(this->_fixedPointNumber);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-    this->_fixedPointNumber = raw;
+	this->_fixedPointNumber = raw;
 }
 
 // The copy assignment operator copies the contents from one existing object to another existing object.
 Fixed& Fixed::operator=(const Fixed& src)
 {
-    if(this != &src)
-        this->_fixedPointNumber = src.getRawBits();
-    return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	if(this != &src)
+		this->_fixedPointNumber = src.getRawBits();
+	return(*this);
 }
 
-//operador << está diseñado para convertir el valor de punto fijo de nuevo a flotante usando toFloat()
-std::ostream& operator<<(std::ostream &out, const Fixed &fixed) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const Fixed &fixed)
 {
-    out << fixed.toFloat(); //llama a la funcion tofloat dentro del objeto pasado como parametro
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+	out << fixed.toFloat();
+	return(out);
 }
-
-/*
-hacer '>> this->_fractionalBits' es mas eficiente que '/ (1 << this->_fractionalBits))' SOLO cuando estamos ajustando escala
-para los demas casos no, porque se pierde presicion con los decimales
-*/

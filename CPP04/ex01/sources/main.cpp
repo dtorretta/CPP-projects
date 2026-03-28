@@ -129,17 +129,8 @@ int main()
         
         std::cout << FORM << "\n✅ #5 Call destructor\n" << RESET << std::endl;          
         delete dog1;
-        //delete dog2; //se elimina automaticamente 
     }
     return 0;
 }
-
-/*
-    como estamos usando 'new' y punteros, la memoria esta allocada en el HEAP y no en el STACK por lo que el destructor no se llama
-    automaticamente y hay que de forma explicita usar DELETE
-    
-    Cuando usas delete en un puntero a la clase base (Animal*), si el destructor no es virtual, 
-    solo se ejecuta el destructor de Animal, ignorando el destructor de Dog o Cat.
-*/
 
 

@@ -31,7 +31,6 @@ class Point
 		~Point(void);
 		
 		Fixed getx(void) const;
-		Fixed gety(void) const;			
+		Fixed gety(void) const;
 };
 #endif
-

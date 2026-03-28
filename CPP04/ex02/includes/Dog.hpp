@@ -27,27 +27,12 @@ class Dog: virtual public AAnimal
 		Dog(void); // Default constructor
 		Dog(const Dog& copy); // Copy constructor 
 		Dog& operator=(const Dog& copy); // Copy assignment operator
-		virtual ~Dog(void); //aca TAMBIEN le ponemos virtual (no es necesario)
+		virtual ~Dog(void);
 
-		virtual void makeSound(void) const; //aca TAMBIEN le ponemos virtual (no es necesario)
-		virtual std::string getType() const; //aca TAMBIEN le ponemos virtual(no es necesario)
+		virtual void makeSound(void) const;
+		virtual std::string getType() const;
 		void setIdea (int i, std::string idea);
 		std::string getIdea (int i);
 };
 		
 #endif
-
-/*
-como contrapartida, en la funciond entro de cada clase tambien le ponemos virtual (NO ES REALMENTE NECESARIO)
-
-DESTRUCTOR
-Cuando se crea un objeto de tipo Dog, su destructor es llamado. 
-Si el destructor de Animal no fuera virtual, solo se llamaría el destructor de Animal, no el destructor de Dog, 
-lo que podría generar comportamientos inesperados, como no liberar correctamente los recursos asignados por la clase derivada.
-
-Aunque Dog hereda de Animal, no es necesario marcar su destructor como virtual. 
-El polimorfismo se maneja en la clase base (Animal) cuando la clase base tiene métodos virtuales, 
-incluido el destructor. En este caso, el destructor de Animal es virtual, y esto ya garantiza el 
-comportamiento correcto de la destrucción del objeto
-
-*/

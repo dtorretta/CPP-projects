@@ -1,5 +1,5 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define RESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 #include <fstream>
@@ -7,7 +7,7 @@
 #include <string>
 #include <exception>
 #include "Bureaucrat.hpp"
-#include "Aform.hpp" //necesario??
+#include "AForm.hpp"
 
 #include <cstdlib>
 #include <sstream> 
@@ -23,7 +23,7 @@
 
 class Bureaucrat;
 
-class PresidentialPardonForm : public AForm //deberia agregarle virutal?
+class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string _target;

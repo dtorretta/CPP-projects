@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:44:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:52:50 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 #include "../includes/Bureaucrat.hpp"
 
 // Default constructor
-//cuando los atributos privados son const SOLO pueden asignarse en el constructor en la lista de inicializacion
 AForm::AForm() : _name("unnamed"), _gradeToSign(150), _gradeToExecute(150), _signed(false)
 {
 	std::cout << "AForm Default Constructor called" << std::endl;
 }
 
 // Constructor
-//cuando los atributos privados son const SOLO pueden asignarse en el constructor en la lista de inicializacion
 AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _signed(false)
 {
 	if(gradeToSign < 1 || gradeToExecute < 1)
@@ -46,7 +44,7 @@ AForm& AForm::operator=(const AForm& copy)
 		this->_signed = copy.getSigned();
 		std::cout << "AForm Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -93,7 +91,7 @@ const char* AForm::NotSignedException::what() const throw()
 }
 
 //overload <<
-std::ostream& operator<<(std::ostream &out, const AForm &f) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const AForm &f)
 {
     std::string status = "not signed";
     
@@ -103,7 +101,7 @@ std::ostream& operator<<(std::ostream &out, const AForm &f) //std::ostream inclu
     out << YELLOW << f.getName() << "\nstatus: " << status
         << "\nForm grade required to sign it: " << f.getGradeToSign() 
 		<< "\nForm grade required to execute it: " << f.getGradeToExecute()<< "." << RESET;
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+    return(out);
 }
 
 void AForm::beSigned(Bureaucrat &b)
@@ -114,7 +112,7 @@ void AForm::beSigned(Bureaucrat &b)
 	this->_signed = true;
 }
 
-//cuando uso this-> estoy trabajando con el objeto derivado
+
 void AForm::beExecute(Bureaucrat const & executor) const
 {
 	if(!this->_signed)	

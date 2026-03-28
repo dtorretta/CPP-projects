@@ -7,10 +7,11 @@
 #include <string>
 #include <exception>
 #include "Bureaucrat.hpp"
-#include "Aform.hpp" //necesario??
+#include "AForm.hpp"
 
 #include <cstdlib>
 #include <sstream> 
+# include <ctime>
 
 #define GREEN	"\033[32m"
 #define RED  	"\033[31m"
@@ -23,7 +24,7 @@
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm //deberia agregarle virutal?
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string _target;

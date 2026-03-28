@@ -12,5 +12,5 @@ int main(int ac, char **av)
 	harlFilter harl;	
 	harl.complain(level);
 
-    return 0;
+	return 0;
 }

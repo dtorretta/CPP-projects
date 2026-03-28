@@ -65,32 +65,3 @@ class Fixed
 std::ostream& operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
-
-
-/*
-
-El hecho de que uses int como argumento en el operador de post-incremento es una convención en C++. 
-Este argumento no se utiliza en el cuerpo de la función, pero su presencia permite al compilador 
-diferenciar entre el pre-incremento y el post-incremento.
-
-static const int _fractionalBits;
-
-que sea static significa que esta variable pertenece a la clase y no a las instancias (objetos) de la clase.
-si no dijera static Cada objeto (Fixed a; Fixed b;) tendría su propia copia de fractionalBits.
-
-al ser static, se define como variable global:
-const int Fixed::_fractionalBits = 8;
-
-
-declarar la funcion por fuera de la clase:
-estás declarando la función como una función no miembro de la clase
-es una función que no forma parte de la clase
-esto es asi porque el operador << trabaja con std::cout
-que no es parte de la clase Fixed. Es decir, std::cout es un objeto diferente y no 
-tiene nada que ver con la clase Fixed directamente. Es un flujo de salida estándar para la consola.
-
-¿Qué es un operador sobrecargado?
-Cuando hablamos de "sobrecargar" un operador en C++, significa que estamos definiendo 
-un nuevo comportamiento para un operador estándar (como +, -, <<, >>, etc.) 
-
-*/

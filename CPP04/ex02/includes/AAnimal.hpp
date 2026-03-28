@@ -27,14 +27,9 @@ class AAnimal
 		AAnimal& operator=(const AAnimal& copy); // Copy assignment operator
 		virtual ~AAnimal(void);
 
-		virtual void makeSound(void) const = 0; // Ahora es una clase abstracta
-		virtual std::string getType() const; //cada clase va a tener su propia funcion
+		virtual void makeSound(void) const = 0;
+		virtual std::string getType() const;
 };
 		
 #endif
 
-/*
-ABSTRACT
-
-
-*/

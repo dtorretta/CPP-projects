@@ -62,18 +62,10 @@ class AForm
 		
 		void beSigned(Bureaucrat &b);
 		void beExecute(Bureaucrat const & executor) const; 
-		virtual void execute() const = 0; //declaro una función virtual pura asi la clase automáticamente se convierte en abstracta
+		virtual void execute() const = 0;
 };      
 		
 std::ostream& operator<<(std::ostream &out, const AForm &f);
 
 
 #endif
-
-
-/*
-no es random la funcion que declaro virtual, sino que la que elija implica que todas las clases derivadas 
-deben implementar esta misma función con exactamente la misma firma
-
-cuando defino una funcion como derivada, esta NO tiene que definirse en la clase parent. Solo se declara
-*/

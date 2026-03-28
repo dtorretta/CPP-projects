@@ -26,13 +26,3 @@ class harlFilter
 };
 		
 #endif
-
-/*
-el "switch" se refiere a una sentencia de control de flujo en C++ que permite elegir entre varias opciones posibles 
-basadas en el valor de una variable o expresión.
-
-fallthrough:
-si no colocas un break, el flujo de control continuará ejecutando los siguientes case a medida que se vayan encontrando.
-la version 98 pide que explicitamente agreguemos el comentario // Fallthrough para evitar los warning
-*/
-

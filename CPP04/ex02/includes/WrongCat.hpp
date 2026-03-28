@@ -25,8 +25,3 @@ class WrongCat : public WrongAnimal //NO USAMOS VIRTUAL
 	};
 
 	#endif
-	
-/*
-class WrongCat : public WrongAnimal
-le quitamos Virtual a la clase derivada	
-*/

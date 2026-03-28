@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   static.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 08:54:21 by dtorrett          #+#    #+#             */
+/*   Updated: 2025/03/10 08:54:21 by dtorrett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Fixed.hpp"
 
 /*****STATIC FUNCTIONS*****/
 
 Fixed& Fixed::min(Fixed &a, Fixed &b)
 {
-    return(a < b) ? a : b;
+	return(a < b) ? a : b;
 }
 
 const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 {
-    return(a < b) ? a : b;
+	return(a < b) ? a : b;
 }
 
 Fixed& Fixed::max(Fixed &a, Fixed &b)
 {
-    return(a > b) ? a : b;
+	return(a > b) ? a : b;
 }
 
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {
-    return(a > b) ? a : b;
+	return(a > b) ? a : b;
 }
 

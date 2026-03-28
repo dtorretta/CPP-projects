@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/11/24 19:46:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/27 16:28:52 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int Span::shortestSpan()
 
 void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	size_t rangeSize = std::distance(begin, end); //averiguar el rango
+	size_t rangeSize = std::distance(begin, end);
 	if(_Array.size() + rangeSize > _size)
 		throw NoMoreSpace();
 	_Array.insert(_Array.end(), begin, end);

@@ -25,15 +25,10 @@ class WrongAnimal
 		WrongAnimal(); // Default constructor
 		WrongAnimal(const WrongAnimal& copy); // Copy constructor 
 		WrongAnimal& operator=(const WrongAnimal& copy); // Copy assignment operator
-		~WrongAnimal(); //NO USAMOS VIRTUAL ACA
+		~WrongAnimal();
 
-		void makeSound() const; //NO USAMOS VIRTUAL ACA
-		std::string getType() const; //NO USAMOS VIRTUAL ACA
+		void makeSound() const;
+		std::string getType() const;
 };
 		
 #endif
-
-/*
-Destructor, Makesound y getType les quitamos el virtual
-
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:43:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:44:18 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 #include "../includes/Bureaucrat.hpp"
 
 // Default constructor
-//cuando los atributos privados son const SOLO pueden asignarse en el constructor en la lista de inicializacion
 Form::Form() : _name("unnamed"), _gradeToSign(150), _gradeToExecute(150), _signed(false)
 {
 	std::cout << "Form Defult Constructor called" << std::endl;
 }
 
 // Constructor
-//cuando los atributos privados son const SOLO pueden asignarse en el constructor en la lista de inicializacion
 Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _signed(false)
 {
 	if(gradeToSign < 1 || gradeToExecute < 1)
-		throw GradeTooHighException(); //nunca finaliza el constructor asi que el objeto no se crea
+		throw GradeTooHighException();
 	if(gradeToSign > 150 || gradeToExecute > 150)
 		throw GradeTooLowException();  
 	std::cout << "Form Constructor called" << std::endl;
@@ -46,7 +44,7 @@ Form& Form::operator=(const Form& copy)
 		this->_signed = copy.getSigned();
 		std::cout << "Form Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -88,7 +86,7 @@ const char* Form::GradeTooLowException::what() const throw()
 }
 
 //overload <<
-std::ostream& operator<<(std::ostream &out, const Form &f) //std::ostream incluye a std::cout
+std::ostream& operator<<(std::ostream &out, const Form &f)
 {
     std::string status = "not signed";
     
@@ -98,7 +96,7 @@ std::ostream& operator<<(std::ostream &out, const Form &f) //std::ostream incluy
     out << YELLOW << f.getName() << "\nstatus: " << status
         << "\nForm grade required to sign it: " << f.getGradeToSign() 
 		<< "\nForm grade required to execute it: " << f.getGradeToExecute()<< "." << RESET;
-    return(out); // Devuelve el flujo de salida para permitir encadenar más operaciones
+    return(out);
 }
 
 void Form::beSigned(Bureaucrat &b)
@@ -107,5 +105,4 @@ void Form::beSigned(Bureaucrat &b)
 		throw GradeTooLowException();  
 	
 	_signed = true;
-	//std::cout << "Form signed by the Bureaucrat " << b.getName() << std::endl;
 }

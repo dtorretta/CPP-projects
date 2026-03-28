@@ -25,7 +25,7 @@
 
 class Serializer
 {
-	private: //como no las voy a usar las dejo en privado
+	private:
 		Serializer(); // Default constructor
 		Serializer(const Serializer& copy); // Copy constructor 
 		Serializer& operator=(const Serializer&); // Copy assignment operator

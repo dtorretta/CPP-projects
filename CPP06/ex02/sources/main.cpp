@@ -14,7 +14,7 @@
 #include <cstdlib>  // para rand() y srand()
 #include <ctime>    // para time()
 
-Base* generate(void) //retorna un puntero a la clase A, B o C. esta clase se crea DINAMICAMENTE
+Base* generate(void)
 {
     int random = rand() % 3;
     switch (random)
@@ -30,14 +30,6 @@ Base* generate(void) //retorna un puntero a la clase A, B o C. esta clase se cre
     }
 }
 
-/*
-si generate retorno A --> Base* baseptr = new A()
-basePtr es un puntero a la clase Base (Base*).
-Pero en realidad está apuntando a un objeto A que fue creado con new A().
-Usamos dynamic_cast para preguntar: ¿Esto es en realidad un A*?
-
-esto es muy util en polimorfismo
-*/
 void identify(Base* p)
 {
     if(dynamic_cast<A*>(p))
@@ -50,18 +42,14 @@ void identify(Base* p)
         std::cout << RED << "Unknown type!" << RESET << std::endl;
 }
 
-/*
-lo mismo, pero usando una referencia
-aca vamos a encadenar try - catchs
-*/
-void identify(Base& p) // lo mismo, pero usando una referencia
+void identify(Base& p)
 {
     try
     {
-        (void)dynamic_cast<A&>(p); //(void) para ignorar el valor resultante, evita el warning de "unused value".
+        (void)dynamic_cast<A&>(p);
         std::cout << YELLOW << "A" << RESET << std::endl;
     }
-    catch(...) //para capturar cualquier tipo de excepción. solo importa detectar si la conversión falló, sin importar el tipo específico del error.
+    catch(...)
     {
        try
        {
@@ -89,10 +77,10 @@ int main(void)
 	Base* p = generate();
 	
 	std::cout << FORM << "\n✅ #1 Identified type with pointer.\n" << RESET << std::endl;
-	identify(p);  // por puntero
+	identify(p);  // pointer
 	
 	std::cout << FORM << "\n✅ #2 Identified type with reference.\n" << RESET << std::endl;
-	identify(*p); // por referencia
+	identify(*p); // reference
 
 	std::cout << std::endl;
 	delete p;

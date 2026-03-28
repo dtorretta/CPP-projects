@@ -29,21 +29,18 @@ int main(int argc, char **argv)
 }
 
 // // INPUT TO TEST:
-// - 0
-// - nan
-// - NaN
-// - inf
-// - inff
-// - -inf
-// - -inff
-// - +inf
-// - +inff
-// - 42.0f
-
-// - 2147483647
-// - 2147483648
-// - -2147483648
-// - -2147483649
-// - 1.0e40 (bigger than max float)
-// - max float: 3.40282e+38
-// - max double: 1.79769e+308
+// 0
+// nan
+// NaN
+// -inf
+// -inff
+// +inf
+// +inff
+// 42.0f
+// 2147483647
+// 2147483648
+// -2147483648
+// -2147483649
+// max float: 3.40282e+38
+// 1.0e40 (bigger than max float)
+// max double: 1.79769e+308

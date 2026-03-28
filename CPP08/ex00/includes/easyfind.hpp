@@ -17,7 +17,7 @@
 #define FORM    "\033[4m"
 #define RESET	"\033[0m"
 
-class NoOccurrence : public std::exception //no puedo agregarlo dentro del template
+class NoOccurrence : public std::exception
 {
 	public:
 		const char* what() const throw()
@@ -26,8 +26,7 @@ class NoOccurrence : public std::exception //no puedo agregarlo dentro del templ
 		}
 };
 		
-template <typename T> // T representa el tipo del contenedor. ej: std::vector<int>
-//this returns an specific element in position '*it' of the container 'T'
+template <typename T> 
 typename T::iterator easyFind(T &container, int value) 
 {
     typename T::iterator it = std::find(container.begin(), container.end(), value);
@@ -35,11 +34,3 @@ typename T::iterator easyFind(T &container, int value)
         throw NoOccurrence();
     return it;
 }
-
-/*escribir "typename T" es basicamente el comodin
-Queremos devolver un iterador que apunta al número buscado dentro del contenedor.
-
-container.end() --> no es el ultimo elemento del array sino el NULL final
-
-ITERADOR == equivale a puntero en C
-*/

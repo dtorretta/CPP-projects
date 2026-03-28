@@ -40,13 +40,3 @@ class RPN
 		//getter
 		int getResult();
 };
-
-/*
-INICIALIZACION AUTPOMATICA DE ATRIBUTOS PRIVADOS
-
--Con un constructor por defecto vacío (RPN()) tus atributos como _operation se inicializan correctamente 
-y vacíos si son tipos STL que tienen constructor por defecto.
-
--Tipos primitivos (int, float, double, char, punteros crudos, bool, etc.): 
-Estos NO se inicializan automáticamente si usás un constructor por defecto vacío.
-*/

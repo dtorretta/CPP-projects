@@ -48,7 +48,7 @@ class Bureaucrat
 		std::string getName() const;
 		int getGrade() const;
 		
-		void incrementGrade(); //no pueden ser const porque dentro de esta fuincion se va a modificar el valor de grade
+		void incrementGrade();
 		void decrementGrade();
 };
 		

@@ -38,5 +38,6 @@ int main(void)
 	std::cout << FORM << "\n✅ #3 Compare them.\n" << RESET << std::endl;
 	if (recovered == &original)
 		std::cout << GREEN << "Pointer successfully restored!" << RESET << std::endl;
+	std::cout << std::endl;
 	return 0;
 }

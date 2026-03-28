@@ -32,15 +32,3 @@ class Fixed
 };
 		
 #endif
-
-
-/*
-static const int _fractionalBits;
-
-que sea static significa que esta variable pertenece a la clase y no a las instancias (objetos) de la clase.
-si no dijera static Cada objeto (Fixed a; Fixed b;) tendría su propia copia de fractionalBits.
-
-al ser static, se define como variable global:
-const int Fixed::_fractionalBits = 8;
-
-*/

@@ -46,7 +46,6 @@ int main()
         std::cout << FORM << "\n✅ #1 Create a WrongAnimal object from WrongAnimal class\n" << RESET << std::endl;
         const WrongAnimal* meta = new WrongAnimal();
         meta->makeSound();
-        //delete meta;
         
         std::cout << FORM << "\n✅ #2 Create a WrongCat object from WrongAnimal class\n" << RESET << std::endl;
         const WrongAnimal* i = new WrongCat();
@@ -57,11 +56,3 @@ int main()
     }
     return 0;
 }
-
-/*
-    como estamos usando 'new' y punteros, la memoria esta allocada en el HEAP y no en el STACK por lo que el destructor no se llama
-    automaticamente y hay que de forma explicita usar DELETE
-    
-    Cuando usas delete en un puntero a la clase base (Animal*), si el destructor no es virtual, 
-    solo se ejecuta el destructor de Animal, ignorando el destructor de Dog o Cat.
-*/

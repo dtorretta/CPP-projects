@@ -4,11 +4,12 @@ SRC	=   sources/PhoneBook.cpp \
 		sources/Contact.cpp \
 		sources/main.cpp 
 
-INC =   -I ./includes/
+INC_DIR	=	includes
+INC =   $(shell find $(INC_DIR) -type f -name "*.hpp")
    
 OBJS = $(SRC:%.cpp=%.o)
 
-CPP = c++
+CPP = g++
 CPP_FLAGS = -Wall -Wextra -Werror -std=c++98 
 
 all: $(NAME)

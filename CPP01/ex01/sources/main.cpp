@@ -15,7 +15,7 @@ int main(int ac, char **av)
 	std::cout << BLUE << "\n🌑🔮 Darkness falls across the land. The midnight hour is close at hand" << std::endl;
 	std::cout << "Creatures crawl in search of blood to terrorize y'all's neighborhood 🔮🌑\n" << RESET << std::endl;
 	
-	Zombie *horde = zombieHorde(std::atoi(av[1]), "Zombie "); //creo un array de zombies y llamo a la fx donde le asigna memoria y los nombres
+	Zombie *horde = zombieHorde(std::atoi(av[1]), "Zombie ");
 	std::cout << std::endl;
 	
 	for(int i = 0; i < std::atoi(av[1]); i++)

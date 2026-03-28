@@ -31,9 +31,6 @@ class Array
 		
 		//subscript operator
 		T& operator[](unsigned int i);
-		/*no pongo int& porque quiero hacer un template que permita todo. 
-		Significa "Devuelvo una referencia al tipo T que el usuario eligió"
-        y T va a ser int, float, std::string, o lo que sea que se usó para instanciar la plantilla.*/
         
         //member functions
         unsigned int size() const;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dtorrett <dtorrett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:52:18 by dtorrett          #+#    #+#             */
-/*   Updated: 2025/06/18 22:31:30 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/17 14:54:04 by dtorrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& c
 		this->_target = copy.getTarget();
 		std::cout << "RobotomyRequestForm Copy Operator called" << std::endl;
 	}
-	return(*this); //this es un puntero entonces si retornamos *this lo estamos desreferenciando para acceder a su objeto
+	return(*this);
 }
 
 //destructor
@@ -58,7 +58,6 @@ std::string RobotomyRequestForm::getTarget() const
 	return(this->_target);
 }
 
-//creo una validacion random para que aveces falle asi se puefe checkear el mensaje de error
 void RobotomyRequestForm::execute() const
 {
 	

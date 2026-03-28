@@ -23,7 +23,7 @@ Array<T>::Array(unsigned int size) : _size(size)
 	_ptr = new T[size];
 	for(unsigned int i = 0; i < size; i++)
 	{
-		_ptr[i] = T(); //inicializa cada elemento con el default constructor
+		_ptr[i] = T();
 	}
 }
 
@@ -36,7 +36,7 @@ Array<T>::Array(const Array<T>& copy): _size(copy.size())
     	this->_ptr = new T[this->_size];
     	for(unsigned int i = 0; i < this->_size; i++)
     	{
-    		this->_ptr[i] = copy._ptr[i]; //podria hacer _ptr[i] si tuviera la definicion de [] mas arriba
+    		this->_ptr[i] = copy._ptr[i];
     	}
     	std::cout << BLUE << "Copy Constructor called" << RESET << std::endl;
     }
@@ -48,10 +48,10 @@ Array<T>& Array<T>::operator=(const Array& copy)
 {
 	if(this != &copy)
 	{
-		delete[] this->_ptr; //1. liberar memoria
+		delete[] this->_ptr;
 		this->_size = copy.size();
-		this->_ptr = new T[this->_size]; //2. crear nuevo bloque
-		for(unsigned int i = 0; i < this->_size; i++)//3. Copiar elemento por elemento 
+		this->_ptr = new T[this->_size];
+		for(unsigned int i = 0; i < this->_size; i++)
     	{
     		this->_ptr[i] = copy._ptr[i];
     	}

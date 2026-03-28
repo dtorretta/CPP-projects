@@ -1,7 +1,5 @@
 #include "../includes/Replace.hpp"
 
-
-
 int main(int ac, char **av)
 {
 	if (ac != 4)
@@ -15,7 +13,7 @@ int main(int ac, char **av)
 		return 1;
 	}
 	
-	std::ifstream fd(av[1]); //es lo mismo que hacer       std::ifstream fd;   |     fd.open(av[1]);
+	std::ifstream fd(av[1]);
 	if(!fd.is_open())
 	{
 		std::cout << RED << "Error opening file!" << RESET << std::endl;
@@ -27,7 +25,7 @@ int main(int ac, char **av)
 	std::string line;
 	std::string result;
 	std::string outputFile_name = sed.getString("name") + ".replace";
-	std::ofstream outputFile(outputFile_name.c_str()); //como estamos en v98 tengo queagregar el .c_str() que lo convierte en un const char*
+	std::ofstream outputFile(outputFile_name.c_str());
 	
 	if(!outputFile.is_open())
 	{
@@ -35,7 +33,7 @@ int main(int ac, char **av)
 		return 1;
 	}
 	
-	while(std::getline(fd, line)) //automaticamente lee una nueva linea con cada llamado
+	while(std::getline(fd, line))
 	{
 		result = sed.ft_replace (line);
 		outputFile << result << std::endl;
